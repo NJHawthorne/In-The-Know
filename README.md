@@ -1,20 +1,22 @@
-# Perk Framework
+# In the Know
 
-## Build Node Web Apps with Ease
+## Description
 
 Perk is a sturdy node framework that gets out of your way, built on top of the best existing libraries out there. This framework is for developers who value simplicity and are looking for a solid set of tools to build sophisticated web applications.
 
-### [Getting Started](http://perkframework.com/guides/getting-started-os-x.html)
+## User Stories
 
-Learn how to get up and running with Perk.
+[Trello Board](https://trello.com/b/MvVHhrbG/in-the-know)
 
-### [Documentation](http://perkframework.com/api/index.html)
+## Wireframes
 
 Detailed description of the ins and outs of the framework.
 
-### [Guides](http://perkframework.com/guides/index.html)
+## Models
 
 Need to build and API server? Set up user authentication or OAuth? This is the place to go for step by step guides.
+
+## APIs, Plugins, Libraries, and Frameworks
 
 <!--
 1. Routing (express)
