@@ -7,7 +7,8 @@
     "dev": "./node_modules/.bin/gulp dev",
     "config": "./node_modules/.bin/gulp config",
     "build": "./node_modules/.bin/gulp build",
-    "postinstall": "node --use_strict postinstall"
+    "postinstall": "node --use_strict postinstall",
+    "refresh": "dropdb pointer-app && createdb pointer-app && knex migrate:latest && knex seed:run"
   },
   "devDependencies": {
     "async": "^2.0.0-rc.2",
@@ -70,6 +71,7 @@
     "pg": "^4.5.1",
     "progress": "^1.1.8",
     "pushpin": "git+https://github.com/alarner/pushpin.git",
+    "rayon": "^1.1.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.4.0",
