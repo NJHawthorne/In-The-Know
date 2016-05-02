@@ -19,11 +19,23 @@ This webapp is a modern twist on the idea of social media, in that it doesn't fu
 
 Detailed description of the ins and outs of the framework.
 
-## Models
+## APIs, Libraries, Frameworks, and Runtimes
 
-Need to build and API server? Set up user authentication or OAuth? This is the place to go for step by step guides.
+#API
+	-Filestack
 
-## APIs, Plugins, Libraries, and Frameworks
+#Libraries: 
+	-jQuery
+	-React
+	-Rayon
+
+#Frameworks:
+	-Backbone
+	-Perk
+
+#Runtimes:
+	-Node.js
+
 
 <!--
 1. Routing (express)
