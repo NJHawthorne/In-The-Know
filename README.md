@@ -12,8 +12,11 @@ This webapp is a modern twist on the idea of social media, in that it doesn't fu
 
 ## Mock-ups
 [Content Page](http://i.imgur.com/9QBqDYK.png)
+
 [Create Page](http://i.imgur.com/v7NQLaE.png)
+
 [Profile Page](http://i.imgur.com/5BRAzzA.png)
+
 [Home Page](http://i.imgur.com/59iHL8C.png)
 
 ## Data Models
