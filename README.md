@@ -12,12 +12,13 @@ This webapp is a modern twist on the idea of social media, in that it doesn't fu
 
 ## Mock-ups
 [Content Page](http://i.imgur.com/9QBqDYK.png)
-[Create Page](http://i.imgur.com/DHZtu8p.png)
+[Create Page](http://i.imgur.com/v7NQLaE.png)
 [Profile Page](http://i.imgur.com/5BRAzzA.png)
+[Home Page](http://i.imgur.com/59iHL8C.png)
 
-## Wireframes
+## Data Models
 
-Detailed description of the ins and outs of the framework.
+[Data Models](http://i.imgur.com/088m0c1.png)
 
 ## APIs, Libraries, Frameworks, and Runtimes
 
