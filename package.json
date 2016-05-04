@@ -8,7 +8,7 @@
     "config": "./node_modules/.bin/gulp config",
     "build": "./node_modules/.bin/gulp build",
     "postinstall": "node --use_strict postinstall",
-    "refresh": "dropdb pointer-app && createdb pointer-app && knex migrate:latest && knex seed:run"
+    "refresh": "dropdb intheknow && createdb intheknow && knex migrate:latest && knex seed:run"
   },
   "devDependencies": {
     "async": "^2.0.0-rc.2",
