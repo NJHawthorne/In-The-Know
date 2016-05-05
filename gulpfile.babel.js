@@ -98,10 +98,14 @@ gulp.task('watchify', ['check-config'], function() {
 	let b = browserify({
 		cache: {},
 		packageCache: {},
-		plugin: [watchify],
+		// plugin: [watchify],
 		debug: true,
 		entries: ['./public/scripts/main.js']
 	});
+	b.plugin(watchify, {
+ 		poll: true,
+ 		sourceType: 'module'
+ 	});
 	b.on('log', (message) => {
 		gutil.log(gutil.colors.green('Browserify'), message);
 	});
