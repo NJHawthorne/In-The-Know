@@ -11,6 +11,7 @@
 		<!-- <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script> -->
 
 <!-- 		<input type="filepicker" data-fp-apikey="ABF95lzYQqNV2ewYLYYQyz" onchange="alert(event.fpfile.url)"> -->
+		<script type="text/javascript">window.user = <%- user ? JSON.stringify(user) : '{}' %>;</script>
 		<script type="text/javascript" src="<%= env === 'development' ? '/scripts/bundle.js' : '/scripts/bundle.min.js?'+version %>"></script>
 	</body>
 </html>

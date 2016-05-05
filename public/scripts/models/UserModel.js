@@ -12,4 +12,4 @@ const UserModel = Backbone.Model.extend({
 	idAttribute: 'id' 
 });
 
-export default new UserModel();
+export default new UserModel(window.user);
