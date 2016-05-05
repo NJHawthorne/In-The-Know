@@ -1,6 +1,7 @@
 import React from 'react';
 import user from './../../models/UserModel';
 import $ from 'jquery';
+import {browserHistory} from 'react-router';
 
 export default React.createClass({
 	getInitialState: function() {
@@ -46,8 +47,6 @@ export default React.createClass({
 	},
 	handleRegister: function(e) {
 		e.preventDefault();
-		console.log('You pressed the register button!');
-		console.log(this.state);
 		$.ajax({
 			url: '/auth/register',
 			type: 'POST',
@@ -63,10 +62,9 @@ export default React.createClass({
 			},
 			success: (newUser) => {
 				this.state.user.set(newUser);
-				console.log('IT WORKED! :D');
+				browserHistory.push('/');
 			},
 			error: (err) => {
-				console.log('YOU MESSED SOMETHING UP! FIX IT');
 				this.setState({error: err.responseJSON});
 			}
 		});

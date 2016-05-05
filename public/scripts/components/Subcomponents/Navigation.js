@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import user from './../../models/UserModel';
 import $ from 'jquery';
+import {browserHistory} from 'react-router';
 
 export default React.createClass({
 	getInitialState: function() {
@@ -10,7 +11,6 @@ export default React.createClass({
 		};
 	},
 	render: function() {
-		console.log(this.state.user);
 		if(this.state.user.get('id')) {
 			return (
 				<nav>
@@ -37,13 +37,12 @@ export default React.createClass({
 	},
 	handleLogout: function(e) {
 		e.preventDefault();
-		console.log('You tried to logout. But it doesn\'t work. Welcome to hell >:)');
 		this.state.user.clear();
 		$.ajax({
 			type: 'POST',
 			url: 'auth/logout',
 			success: () => {
-				console.log('You actually logged out? Hacker.');
+				browserHistory.push('/');
 			}
 		});
 	}

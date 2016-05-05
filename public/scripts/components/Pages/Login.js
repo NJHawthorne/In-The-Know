@@ -1,6 +1,7 @@
 import React from 'react';
 import user from './../../models/UserModel';
 import $ from 'jquery';
+import {browserHistory} from 'react-router';
 
 export default React.createClass({
 	getInitialState: function() {
@@ -31,21 +32,19 @@ export default React.createClass({
 	},
 	handleLogin: function(e) {
 		e.preventDefault();
-		console.log('You pressed the new login button!');
-		console.log(this.state);
 		$.ajax({
 			url: 'auth/login',
 			type: 'POST',
 			data: {
 				email: this.refs.email.value,
-			password: this.refs.password.value
+				password: this.refs.password.value
 			},
 			headers: {
 				Accept: 'application/json'
 			},
 			success: (login) => {
 				this.state.user.set(login);
-				console.log('IT WORKED! :D');
+				browserHistory.push('/');
 			},
 			error: (err) => {
 				this.setState({error: err.responseJSON});
