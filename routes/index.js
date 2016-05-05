@@ -12,6 +12,7 @@ let loggedIn = require('../lib/middleware/logged-in');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	res.render('index', {
+		user: req.user,
 		title: 'Express / React Template'
 	});
 });
