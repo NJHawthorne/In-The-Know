@@ -6,6 +6,8 @@ export default React.createClass({
 		return (
 			<nav>
 				<Link to="/">Home page</Link>
+				<Link to="/login">Login Page</Link>
+				<Link to="/register">Register Page</Link>
 				<Link to="/profile">Profile page</Link>
 				<Link to="/create">Create page</Link>
 				<Link to="content">Content page</Link>

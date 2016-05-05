@@ -22,6 +22,8 @@ import Create from './components/pages/Create';
 import Content from './components/pages/Content';
 import Home from './components/pages/Home';
 import App from './components/App';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
 
 const router = (
 	<Router history={browserHistory}>
@@ -30,6 +32,8 @@ const router = (
 			<Route path="/profile" component={Profile}/>
 			<Route path="/create" component={Create}/>
 			<Route path="/content" component={Content}/>
+			<Route path="/login" component={Login}/>
+			<Route path="/register" component={Register}/>
 		</Route>
 	</Router>
 );
