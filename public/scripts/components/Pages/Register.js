@@ -24,6 +24,11 @@ export default React.createClass({
 						type="text"
 						required="required" />
 					<input
+						placeholder="Username"
+						ref="username"
+						type="text"
+						required="required" />
+					<input
 						placeholder="Email"
 						ref="email"
 						type="text"
@@ -44,11 +49,12 @@ export default React.createClass({
 		console.log('You pressed the register button!');
 		console.log(this.state);
 		$.ajax({
-			url: 'auth/register',
+			url: '/auth/register',
 			type: 'POST',
 			data: {
 				fistName: this.refs.firstName.value,
 				lastName: this.refs.lastName.value,
+				username: this.refs.username.value,
 				email: this.refs.email.value,
 				password: this.refs.password.value
 			},
