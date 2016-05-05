@@ -13,15 +13,11 @@ export default React.createClass({
 		return (
 			<section>
 				<form onSubmit={this.handleLogin}>
-					<div 
-						className="error">{this.state.errors.email ? this.state.errors.email.message : null}</div>
 					<input
 						placeholder="Email"
 						ref="email"
 						type="text"
 						required="required" />
-					<div 
-						className="error">{this.state.errors.password ? this.state.errors.password.message : null} </div>
 					<input
 						placeholder="Password"
 						ref="password"
@@ -42,7 +38,7 @@ export default React.createClass({
 			type: 'POST',
 			data: {
 				email: this.refs.email.value,
-				password: this.refs.password.value
+			password: this.refs.password.value
 			},
 			headers: {
 				Accept: 'application/json'
