@@ -51,7 +51,7 @@ export default React.createClass({
 			url: '/auth/register',
 			type: 'POST',
 			data: {
-				fistName: this.refs.firstName.value,
+				firstName: this.refs.firstName.value,
 				lastName: this.refs.lastName.value,
 				username: this.refs.username.value,
 				email: this.refs.email.value,

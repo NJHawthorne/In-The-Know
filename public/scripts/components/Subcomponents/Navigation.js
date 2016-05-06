@@ -16,7 +16,6 @@ export default React.createClass({
 				<nav>
 					<Link to="/">Home page</Link>
 					<a href="#" onClick={this.handleLogout}>Logout</a>
-					<Link to="/register">Register Page</Link>
 					<Link to="/profile">Profile page</Link>
 					<Link to="/create">Create page</Link>
 					<Link to="content">Content page</Link>
@@ -28,9 +27,6 @@ export default React.createClass({
 					<Link to="/">Home page</Link>
 					<Link to="/login">Login Page</Link>
 					<Link to="/register">Register Page</Link>
-					<Link to="/profile">Profile page</Link>
-					<Link to="/create">Create page</Link>
-					<Link to="content">Content page</Link>
 				</nav>
 			);
 		}
