@@ -3,7 +3,7 @@ import PageModel from './../models/PageModel';
 
 const PageCollection = Backbone.Collection.extend({
 	model: PageModel,
-	url: '/api/v1/pages'
+	url: '/api/v1/page'
 });
 
-export default PageCollection;
+export default new PageCollection();
