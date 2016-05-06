@@ -10,6 +10,6 @@ export default Backbone.Model.extend({
 		posLeft: 0,
 		imageUrl: 'http://kyiv.ninja/wp-content/themes/kyiv-ninja/images/default-thumb.gif'
 	},
-	urlRoot: '/api/v1/buttons',
+	urlRoot: '/api/v1/button',
 	idAttribute: 'id'
 });

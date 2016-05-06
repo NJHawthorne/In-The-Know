@@ -5,6 +5,6 @@ export default Backbone.Model.extend({
 		pageName: '',
 		userId: null
 	},
-	urlRoot: '/api/v1/pages',
+	urlRoot: '/api/v1/page',
 	idAttribute: 'id'
 });

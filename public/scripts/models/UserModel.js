@@ -8,7 +8,7 @@ const UserModel = Backbone.Model.extend({
 		lastName: '',
 		email: ''
 	},
-	urlRoot: '/api/v1/users',
+	urlRoot: '/api/v1/user',
 	idAttribute: 'id' 
 });
 
