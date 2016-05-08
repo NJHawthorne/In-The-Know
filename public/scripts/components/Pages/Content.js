@@ -6,33 +6,43 @@ export default React.createClass({
 	getInitialState: function() {
 		return {
 			buttons: buttons,
-			eachButton: []
+			eachButton: [],
+			errorFlag: false
 		};
 	},
 	componentDidMount: function() {
-		$.ajax({
-			url: '/api/v1/button',
-			method: 'get', 
-			accepts: 'application/json',
-			data: {
-				where: {
-					pageId: 2
+		const pageId = parseInt(this.props.params.pageId);
+		if(this.state.eachButton.length === 0) {
+			$.ajax({
+				url: '/api/v1/button',
+				method: 'get', 
+				accepts: 'application/json',
+				data: {
+					where: {
+						pageId: pageId
+					}
+				},
+				success: (data) => {
+					console.log('success');
+					console.log(data);
+					if(data == false) {
+						this.setState({errorFlag: true});
+					} else {
+						for (var i = 0; i < data.length; i++) {
+							this.state.eachButton.push({
+								buttonName: data[i].buttonName,
+								color: data[i].color,
+								icon: data[i].icon,
+								imageUrl: data[i].imageUrl,
+								posLeft: data[i].posLeft,
+								posTop: data[i].posTop
+							});
+						}
+						this.setState({eachButton: this.state.eachButton});
+					}
 				}
-			},
-			success: (data) => {
-				for (var i = 0; i < data.length; i++) {
-					this.state.eachButton.push({
-						buttonName: data[i].buttonName,
-						color: data[i].color,
-						icon: data[i].icon,
-						imageUrl: data[i].imageUrl,
-						posLeft: data[i].posLeft,
-						posTop: data[i].posTop
-					});
-				}
-				this.setState({eachButton: this.state.eachButton});
-			} 
-		});
+			});
+		}
 	},
 	render: function() {
 		console.log('render');

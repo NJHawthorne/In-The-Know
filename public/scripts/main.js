@@ -31,7 +31,7 @@ const router = (
 			<IndexRoute component={Home}/>
 			<Route path="/profile/:userId" component={Profile}/>
 			<Route path="/create/:userId" component={Create}/>
-			<Route path="/content" component={Content}/>
+			<Route path="/content/:pageId" component={Content}/>
 			<Route path="/login" component={Login}/>
 			<Route path="/register" component={Register}/>
 		</Route>
