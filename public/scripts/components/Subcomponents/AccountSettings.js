@@ -5,6 +5,7 @@ export default React.createClass({
 		return (
 			<section>
 				<h1>This is where your account settings go!</h1>
+				<p>Your email: {this.props.email}</p>
 			</section>
 		);
 	}

@@ -79,7 +79,7 @@ exports.seed = function(knex, Promise) {
 		.then(userId => {
 			userId = userId[0];
 			return Promise.join(
-				knex('pages').insert({ createdAt: date, pageName: 'Game of Thrones', userId: 2})
+				knex('pages').insert({ createdAt: date, pageName: 'SUPER HAPPY FUN TIME YEAH', userId: 2})
 				.returning('id')
 				.then(pageId => {
 					pageId = pageId[0];
