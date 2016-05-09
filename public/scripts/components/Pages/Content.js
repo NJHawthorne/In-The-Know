@@ -48,6 +48,7 @@ export default React.createClass({
 			return (
 				<section>
 					<h1>This is the not a page. You've been lied to. Ha ha.</h1>
+					<img src="http://media.giphy.com/media/hTh9bSbUPWMWk/giphy.gif" />
 				</section>
 			);
 		} else {
