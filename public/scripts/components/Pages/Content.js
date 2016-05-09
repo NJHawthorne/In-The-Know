@@ -44,8 +44,6 @@ export default React.createClass({
 		}
 	},
 	render: function() {
-		console.log('render');
-		console.log(this.state);
 		if(this.state.errorFlag) {
 			return (
 				<section>

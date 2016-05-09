@@ -17,8 +17,6 @@ export default React.createClass({
 					<Link to="/">Home page</Link>
 					<a href="#" onClick={this.handleLogout}>Logout</a>
 					<Link to={`/profile/${this.state.user.get('id')}`}>Profile page</Link>
-					<Link to={`/create/${this.state.user.get('id')}`}>Create page</Link>
-					<Link to="/content">Content page</Link>
 				</nav>
 			);
 		} else {

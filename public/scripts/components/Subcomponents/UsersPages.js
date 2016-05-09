@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 export default React.createClass({
 	render: function() {
 		return (
 			<div
 				key={this.props.key}>
-				<h1>Here is your {this.props.pageName} page!</h1>
+				<Link to={`/content/${this.props.pageId}`}>{this.props.pageName}</Link>
 			</div>
 		);
 	}

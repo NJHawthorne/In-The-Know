@@ -4,6 +4,7 @@ import UsersPages from './../Subcomponents/UsersPages.js';
 import AccountSettings from './../Subcomponents/AccountSettings.js';
 import user from './../../models/UserModel';
 import $ from 'jquery';
+import {Link} from 'react-router';
 
 export default React.createClass({
 	getInitialState: function() {
@@ -16,20 +17,23 @@ export default React.createClass({
 		this.pageRequest = $.get('/api/v1/page', function(data) {
 			for (var i = 0; i < data.length; i++) {
 				if(data[i].userId === this.state.user.get('id')) {
-					this.state.pages.push(data[i].pageName);
+					this.state.pages.push({
+						pageName: data[i].pageName,
+						id: data[i].id
+					});
+
 				}
 			}
 			this.setState({pages: this.state.pages});
 		}.bind(this));
 	},
 	render: function() {
-		console.log('render');
-		console.log(this.state);
 		const eachPage = this.state.pages.map((val, i, arr) => {
 			return (
 				<UsersPages 
 					key={i}
-					pageName={val} />
+					pageId={val.id}
+					pageName={val.pageName} />
 			);
 		});
 		if(this.state.user.get('id') == this.props.params.userId){
@@ -42,6 +46,7 @@ export default React.createClass({
 						username={this.state.user.get('username')}/>
 					<section>
 						{eachPage}
+						<Link to={`/create/${this.state.user.get('id')}`}>Create a new page!</Link>
 					</section>
 					<AccountSettings 
 						email={this.state.user.get('email')}
