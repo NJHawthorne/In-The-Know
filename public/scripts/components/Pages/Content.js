@@ -1,6 +1,7 @@
 import React from 'react';
 import buttons from './../../collections/ButtonCollection';
 import $ from 'jquery';
+import EachButton from './../subcomponents/EachButton';
 
 export default React.createClass({
 	getInitialState: function() {
@@ -23,8 +24,6 @@ export default React.createClass({
 					}
 				},
 				success: (data) => {
-					console.log('success');
-					console.log(data);
 					if(data == false) {
 						this.setState({errorFlag: true});
 					} else {
@@ -47,10 +46,30 @@ export default React.createClass({
 	render: function() {
 		console.log('render');
 		console.log(this.state);
-		return (
-			<section>
-				<h1>This is the Content page!</h1>
-			</section>
-		);
+		if(this.state.errorFlag) {
+			return (
+				<section>
+					<h1>This is the not a page. You've been lied to. Ha ha.</h1>
+				</section>
+			);
+		} else {
+			let eachButton = this.state.eachButton.map((val, i, arr) => {
+				return (
+					<EachButton 
+						key={i}
+						buttonName={val.buttonName}
+						color={val.color} 
+						icon={val.icon} 
+						imageUrl={val.imageUrl} 
+						posLeft={val.posLeft}
+						posTop={val.posTop} />
+				);
+			});
+			return (
+				<section>
+					{eachButton}
+				</section>
+			);
+		}
 	}
 });
