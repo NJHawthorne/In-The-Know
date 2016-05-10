@@ -6,7 +6,9 @@ export default React.createClass({
 		return (
 			<div
 				key={this.props.key}>
-				<Link to={`/content/${this.props.pageId}`}>{this.props.pageName}</Link>
+				<p>{this.props.pageName}</p>
+				<Link to={`/content/${this.props.pageId}`}>View</Link>
+				<Link to={`/edit/${this.props.pageId}`}>Edit</Link>
 			</div>
 		);
 	}

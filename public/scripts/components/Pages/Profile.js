@@ -4,13 +4,15 @@ import UsersPages from './../Subcomponents/UsersPages.js';
 import AccountSettings from './../Subcomponents/AccountSettings.js';
 import user from './../../models/UserModel';
 import $ from 'jquery';
-import {Link} from 'react-router';
+import Page from './../../collections/PageCollection';
+import {browserHistory} from 'react-router';
 
 export default React.createClass({
 	getInitialState: function() {
 		return {
 			user: user,
-			pages: []
+			pages: [],
+			pageCollection: Page
 		};
 	},
 	componentDidMount: function() {
@@ -27,16 +29,6 @@ export default React.createClass({
 		}.bind(this));
 	},
 	render: function() {
-		const rng = function() {
-			const chars = '1234567890';
-			let password = '';
-			for (var i = 0; i < 10; i++) {
-				let x = Math.floor(Math.random() * chars.length);
-				password += chars.charAt(x);
-			}
-			return password;
-		};
-		let newPage = rng();
 		const eachPage = this.state.pages.map((val, i, arr) => {
 			return (
 				<UsersPages 
@@ -55,7 +47,13 @@ export default React.createClass({
 						username={this.state.user.get('username')}/>
 					<section>
 						{eachPage}
-						<Link to={`/create/${newPage}`}>Create a new page!</Link>
+						<form onSubmit={this.addPage}>
+							<input
+								type='text'
+								placeholder='Page name'
+								ref='pageName' />
+							<button type='submit' />
+						</form>
 					</section>
 					<AccountSettings 
 						email={this.state.user.get('email')}
@@ -63,5 +61,21 @@ export default React.createClass({
 				</section>
 			);
 		}
+	},
+	addPage: function(e) {
+		e.preventDefault();
+		let pageName = this.refs.pageName.value;
+		let userId = this.state.user.get('id');
+		this.state.pageCollection.create({
+			pageName: pageName,
+			userId: userId
+		}, {
+			success: (data) => {
+					console.log(data);
+					let newId = data.get('id');
+					browserHistory.push(`/edit/${newId}`);
+				}
+			}
+		);
 	}
 });

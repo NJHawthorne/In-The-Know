@@ -18,7 +18,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import Profile from './components/pages/Profile';
-import Create from './components/pages/Create';
+import Edit from './components/pages/Edit';
 import Content from './components/pages/Content';
 import Home from './components/pages/Home';
 import App from './components/App';
@@ -30,7 +30,7 @@ const router = (
 		<Route path="/" component={App}>
 			<IndexRoute component={Home}/>
 			<Route path="/profile/:userId" component={Profile}/>
-			<Route path="/create/:pageId" component={Create}/>
+			<Route path="/edit/:pageId" component={Edit}/>
 			<Route path="/content/:pageId" component={Content}/>
 			<Route path="/login" component={Login}/>
 			<Route path="/register" component={Register}/>

@@ -2,7 +2,7 @@ import React from 'react';
 import user from './../../models/UserModel';
 import EachButton from './../subcomponents/EachButton';
 import ButtonCollection from './../../collections/ButtonCollection';
-import Page from './../../models/PageModel';
+import Page from './../../collections/PageCollection';
 
 export default React.createClass({
 	getInitialState: function() {
@@ -46,8 +46,8 @@ export default React.createClass({
 		return (
 			<section>
 				<div>
-					<select>
-						<option key={0} value="pick">Select a button</option>
+					<select onChange={this.chooseButton}>
+						<option key={0} value="selectButton">Select a button</option>
 						{buttonListing}
 						<option key='9' value="new">Make a new button</option>
 					</select>
@@ -59,6 +59,19 @@ export default React.createClass({
 						<input
 							type='color'
 							ref='color' />
+							<select id='selectIcon'>
+								<option key='0' value='selectIcon'>Pick an icon</option>
+								<option key='1' value='fa-linux'>Penguin</option>
+								<option key='2' value='fa-beer'>Beer</option>
+								<option key='3' value='fa-diamond'>Diamond</option>
+								<option key='4' value='fa-fighter-jet'>Jet</option>
+								<option key='5' value='fa-globe'>Earth</option>
+								<option key='6' value='fa-magic'>Magic</option>
+								<option key='7' value='fa-money'>Money</option>
+								<option key='8' value='fa-paper-plane'>Paper Plane</option>
+								<option key='9' value='fa-trophy'>Trophy</option>
+								<option key='10' value='fa-spinner'>Spinner</option>
+							</select>
 						<input 
 							type='range'
 							step='5'
@@ -69,32 +82,16 @@ export default React.createClass({
 							ref='posTop' />
 						<button onClick={this.submitButton}>Submit</button>
 					</form>
-					<form>
-						<input 
-							placeholder='Page name'
-							type='text'
-							ref='pagename' />
-						<button onClick={this.handleSave}>Save Page</button>
-					</form>
 				</div>
 				{eachButton}
 			</section>
 		);
 	},
-	handleSave: function(e) {
-		e.preventDefault();
-		console.log('you tried to save the page. IT WAS ALL IN VAIN. MUAHAHAHAHAHA');
-		console.log(this.state.user.get('id'));
-		// this.state.pages.create({
-		// 	userId: this.state.user.get('id'),
-		// 	pageName: this.refs.pagename.value
-		// });
-	},
 	submitButton: function(e) {
 		e.preventDefault();
 		this.state.buttons.create({
 			buttonName: this.refs.buttonName.value,
-			icon: 'fa-linux',
+			icon: document.getElementById('selectIcon').value,
 			color: this.refs.color.value,
 			posLeft: this.refs.posLeft.value,
 			posTop: this.refs.posTop.value,
