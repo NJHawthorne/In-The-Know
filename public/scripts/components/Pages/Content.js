@@ -1,47 +1,26 @@
 import React from 'react';
 import buttons from './../../collections/ButtonCollection';
-import $ from 'jquery';
 import EachButton from './../subcomponents/EachButton';
 
 export default React.createClass({
 	getInitialState: function() {
 		return {
 			buttons: buttons,
-			eachButton: [],
 			errorFlag: false
 		};
 	},
 	componentDidMount: function() {
 		const pageId = parseInt(this.props.params.pageId);
-		if(this.state.eachButton.length === 0) {
-			$.ajax({
-				url: '/api/v1/button',
-				method: 'get', 
-				accepts: 'application/json',
-				data: {
-					where: {
-						pageId: pageId
-					}
-				},
-				success: (data) => {
-					if(data == false) {
-						this.setState({errorFlag: true});
-					} else {
-						for (var i = 0; i < data.length; i++) {
-							this.state.eachButton.push({
-								buttonName: data[i].buttonName,
-								color: data[i].color,
-								icon: data[i].icon,
-								imageUrl: data[i].imageUrl,
-								posLeft: data[i].posLeft,
-								posTop: data[i].posTop
-							});
-						}
-						this.setState({eachButton: this.state.eachButton});
-					}
+		this.state.buttons.on('update', () => {
+			this.setState({buttons: this.state.buttons});
+		});
+		this.state.buttons.fetch({
+			data: {
+				where: {
+					pageId: pageId
 				}
-			});
-		}
+			}
+		});	
 	},
 	render: function() {
 		if(this.state.errorFlag) {
@@ -52,16 +31,16 @@ export default React.createClass({
 				</section>
 			);
 		} else {
-			let eachButton = this.state.eachButton.map((val, i, arr) => {
+			let eachButton = this.state.buttons.map((val, i, arr) => {
 				return (
 					<EachButton 
-						key={i}
-						buttonName={val.buttonName}
-						color={val.color} 
-						icon={val.icon} 
-						imageUrl={val.imageUrl} 
-						posLeft={val.posLeft}
-						posTop={val.posTop} />
+						key={val.get('id')}
+						buttonName={val.get('buttonName')}
+						color={val.get('color')} 
+						icon={val.get('icon')} 
+						imageUrl={val.get('imageUrl')} 
+						posLeft={val.get('posLeft')}
+						posTop={val.get('posTop')} />
 				);
 			});
 			return (
