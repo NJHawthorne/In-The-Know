@@ -15,6 +15,7 @@ export default React.createClass({
 		return (
 			<div style={iconStyles}>
 				<i className={iconClasses}/>
+				<p>{this.props.buttonName}</p>
 			</div>
 		);
 	}
