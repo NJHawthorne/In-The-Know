@@ -6,4 +6,4 @@ const ButtonCollection = Backbone.Collection.extend({
 	url: '/api/v1/button'
 });
 
-export default ButtonCollection;
+export default new ButtonCollection();

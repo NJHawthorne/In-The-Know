@@ -21,13 +21,22 @@ export default React.createClass({
 						pageName: data[i].pageName,
 						id: data[i].id
 					});
-
 				}
 			}
 			this.setState({pages: this.state.pages});
 		}.bind(this));
 	},
 	render: function() {
+		const rng = function() {
+			const chars = '1234567890';
+			let password = '';
+			for (var i = 0; i < 10; i++) {
+				let x = Math.floor(Math.random() * chars.length);
+				password += chars.charAt(x);
+			}
+			return password;
+		};
+		let newPage = rng();
 		const eachPage = this.state.pages.map((val, i, arr) => {
 			return (
 				<UsersPages 
@@ -46,7 +55,7 @@ export default React.createClass({
 						username={this.state.user.get('username')}/>
 					<section>
 						{eachPage}
-						<Link to={`/create/${this.state.user.get('id')}`}>Create a new page!</Link>
+						<Link to={`/create/${newPage}`}>Create a new page!</Link>
 					</section>
 					<AccountSettings 
 						email={this.state.user.get('email')}
