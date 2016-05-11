@@ -14,9 +14,12 @@ export default React.createClass({
 		};
 		return (
 			<div style={iconStyles}>
-				<i className={iconClasses}/>
+				<i className={iconClasses} onClick={this.displayImage}/>
 				<p>{this.props.buttonName}</p>
 			</div>
 		);
+	},
+	displayImage: function(e) {
+		console.log(e.target);
 	}
 });

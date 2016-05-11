@@ -26,6 +26,9 @@ export default React.createClass({
 			}
 		});
 	},
+	componentWillUnmount: function() {
+		console.log('unmounted');
+	},
 	render: function() {
 		let currentButton = this.getCurrentButton();
 		let eachButton = this.state.buttons.map((val, i, arr) => {
@@ -95,8 +98,8 @@ export default React.createClass({
 						<button onClick={this.submitButton}>Submit</button>
 					</form>
 				</div>
-				<div id='imageSection'>
-
+				<div>
+					<img src={currentButton ? currentButton.get('imageUrl') : null} />
 				</div>
 				{eachButton}
 			</section>
@@ -146,32 +149,43 @@ export default React.createClass({
 	},
 	changeName: function(e) {
 		let currentButton = this.getCurrentButton();
-		currentButton.set({
-			buttonName: e.target.value
-		});
+		if(currentButton) {
+			currentButton.set({
+				buttonName: e.target.value
+			});
+		}
 	},
 	changeColor: function(e) {
 		let currentButton = this.getCurrentButton();
-		currentButton.set({
-			color: e.target.value
-		});
+		if(currentButton) {
+			currentButton.set({
+				color: e.target.value
+			});
+		}
 	},
 	changeIcon: function(e) {
 		let currentButton = this.getCurrentButton();
-		currentButton.set({
-			icon: e.target.value
-		});
+		if(currentButton) {
+			currentButton.set({
+				icon: e.target.value
+			});
+		}
 	},
 	handleFilestack: function(e) {
 		e.preventDefault();
+		let currentButton = this.getCurrentButton();
+		console.log(currentButton);
 		filepicker.setKey('ABF95lzYQqNV2ewYLYYQyz');
  		filepicker.pick({
 		    	mimetype: 'image/*',
 		    	container: 'window',
 		    	services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP']
 		   	},
-		   	function(test){
+		   	(test) => {
 		     	console.log(test.url);
+		     	currentButton.set({
+		     		imageUrl: test.url
+		     	});
 		   	},
 		   	function(FPError){
 		  		console.log(FPError.toString()); //- print errors to console
