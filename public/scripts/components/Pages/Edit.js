@@ -9,12 +9,13 @@ export default React.createClass({
 		return {
 			user: user,
 			buttons: ButtonCollection,
-			page: Page
+			page: Page,
+			selectedButtonId: null
 		};
 	},
 	componentDidMount: function() {
 		const pageId = parseInt(this.props.params.pageId);
-		this.state.buttons.on('update', () => {
+		this.state.buttons.on('update change', () => {
 			this.setState({buttons: this.state.buttons});
 		});
 		this.state.buttons.fetch({
@@ -26,6 +27,7 @@ export default React.createClass({
 		});
 	},
 	render: function() {
+		let currentButton = this.getCurrentButton();
 		let eachButton = this.state.buttons.map((val, i, arr) => {
 				return (
 					<EachButton 
@@ -46,20 +48,23 @@ export default React.createClass({
 		return (
 			<section>
 				<div>
-					<select onChange={this.chooseButton}>
-						<option key={0} value="selectButton">Select a button</option>
-						{buttonListing}
-						<option key='9' value="new">Make a new button</option>
-					</select>
 					<form>
+						<select ref='button' onChange={this.updateCurrentButton}>
+							<option key={0} value="selectButton">Select a button</option>
+							{buttonListing}
+							<option key='9' value="new">Make a new button</option>
+						</select>
 						<input
 							type='text'
 							ref='buttonName'
-							placeholder='Button name' />
+							value={currentButton ? currentButton.get('buttonName') : null} 
+							onChange={this.changeName} />
 						<input
 							type='color'
-							ref='color' />
-							<select id='selectIcon'>
+							ref='color' 
+							value={currentButton ? currentButton.get('color') : null} 
+							onChange={this.changeColor} />
+							<select id='selectIcon' onChange={this.changeIcon}>
 								<option key='0' value='selectIcon'>Pick an icon</option>
 								<option key='1' value='fa-linux'>Penguin</option>
 								<option key='2' value='fa-beer'>Beer</option>
@@ -75,13 +80,23 @@ export default React.createClass({
 						<input 
 							type='range'
 							step='5'
-							ref='posLeft' />
+							ref='posLeft'
+							value={currentButton ? currentButton.get('posLeft') : null} 
+							onChange={this.updatePosition}/>
 						<input 
 							type='range'
 							step='5'
-							ref='posTop' />
+							ref='posTop' 
+							value={currentButton ? currentButton.get('posTop') : null} 
+							onChange={this.updatePosition}/>
+						<input
+							type='submit'
+							onClick={this.handleFilestack} />
 						<button onClick={this.submitButton}>Submit</button>
 					</form>
+				</div>
+				<div id='imageSection'>
+
 				</div>
 				{eachButton}
 			</section>
@@ -89,13 +104,78 @@ export default React.createClass({
 	},
 	submitButton: function(e) {
 		e.preventDefault();
-		this.state.buttons.create({
-			buttonName: this.refs.buttonName.value,
-			icon: document.getElementById('selectIcon').value,
-			color: this.refs.color.value,
-			posLeft: this.refs.posLeft.value,
-			posTop: this.refs.posTop.value,
-			pageId: this.props.params.pageId
+		let currentButton = this.getCurrentButton();
+		if(currentButton) {
+			currentButton.save({
+				buttonName: this.refs.buttonName.value,
+				icon: document.getElementById('selectIcon').value,
+				color: this.refs.color.value,
+				posLeft: this.refs.posLeft.value,
+				posTop: this.refs.posTop.value,
+				pageId: this.props.params.pageId
+			});
+		} else {
+			this.state.buttons.create({
+				buttonName: this.refs.buttonName.value,
+				icon: document.getElementById('selectIcon').value,
+				color: this.refs.color.value,
+				posLeft: this.refs.posLeft.value,
+				posTop: this.refs.posTop.value,
+				pageId: this.props.params.pageId
+			});
+		}
+	},
+	updatePosition: function() {
+		let currentButton = this.getCurrentButton();
+		if(currentButton) {
+			currentButton.set({
+				posLeft: this.refs.posLeft.value,
+				posTop: this.refs.posTop.value
+			});
+		}
+	},
+	getCurrentButton: function() {
+		if(this.state.selectedButtonId) {
+			return this.state.buttons.get(this.state.selectedButtonId);
+		} else {
+			return false;
+		}
+	},
+	updateCurrentButton: function() {
+		this.setState({selectedButtonId: this.refs.button.value});
+	},
+	changeName: function(e) {
+		let currentButton = this.getCurrentButton();
+		currentButton.set({
+			buttonName: e.target.value
 		});
+	},
+	changeColor: function(e) {
+		let currentButton = this.getCurrentButton();
+		currentButton.set({
+			color: e.target.value
+		});
+	},
+	changeIcon: function(e) {
+		let currentButton = this.getCurrentButton();
+		currentButton.set({
+			icon: e.target.value
+		});
+	},
+	handleFilestack: function(e) {
+		e.preventDefault();
+		filepicker.setKey('ABF95lzYQqNV2ewYLYYQyz');
+ 		filepicker.pick({
+		    	mimetype: 'image/*',
+		    	container: 'window',
+		    	services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP']
+		   	},
+		   	function(test){
+		     	console.log(test.url);
+		   	},
+		   	function(FPError){
+		  		console.log(FPError.toString()); //- print errors to console
+		   	}
+		); 
 	}
 });
