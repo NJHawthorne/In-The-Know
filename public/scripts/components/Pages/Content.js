@@ -6,7 +6,8 @@ export default React.createClass({
 	getInitialState: function() {
 		return {
 			buttons: buttons,
-			errorFlag: false
+			errorFlag: false,
+			currentImage: ''
 		};
 	},
 	componentDidMount: function() {
@@ -34,6 +35,7 @@ export default React.createClass({
 			let eachButton = this.state.buttons.map((val, i, arr) => {
 				return (
 					<EachButton 
+						loadImage={this.loadImage}
 						key={val.get('id')}
 						buttonName={val.get('buttonName')}
 						color={val.get('color')} 
@@ -46,8 +48,14 @@ export default React.createClass({
 			return (
 				<section>
 					{eachButton}
+					<div>
+						<img src={this.state.currentImage} />
+					</div>
 				</section>
 			);
 		}
+	},
+	loadImage: function(imageUrl) {
+		this.setState({currentImage: imageUrl});
 	}
 });

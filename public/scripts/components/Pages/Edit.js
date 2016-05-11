@@ -174,15 +174,13 @@ export default React.createClass({
 	handleFilestack: function(e) {
 		e.preventDefault();
 		let currentButton = this.getCurrentButton();
-		console.log(currentButton);
 		filepicker.setKey('ABF95lzYQqNV2ewYLYYQyz');
  		filepicker.pick({
 		    	mimetype: 'image/*',
 		    	container: 'window',
-		    	services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP']
+		    	services: ['COMPUTER']
 		   	},
 		   	(test) => {
-		     	console.log(test.url);
 		     	currentButton.set({
 		     		imageUrl: test.url
 		     	});

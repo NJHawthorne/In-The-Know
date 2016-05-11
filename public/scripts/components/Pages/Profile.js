@@ -71,7 +71,6 @@ export default React.createClass({
 			userId: userId
 		}, {
 			success: (data) => {
-					console.log(data);
 					let newId = data.get('id');
 					browserHistory.push(`/edit/${newId}`);
 				}

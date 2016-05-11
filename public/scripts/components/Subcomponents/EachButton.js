@@ -13,13 +13,15 @@ export default React.createClass({
 			left: leftPosition+'%'
 		};
 		return (
-			<div style={iconStyles}>
-				<i className={iconClasses} onClick={this.displayImage}/>
+			<div style={iconStyles} onClick={this.loadImage}>
+				<i className={iconClasses} />
 				<p>{this.props.buttonName}</p>
 			</div>
 		);
 	},
-	displayImage: function(e) {
-		console.log(e.target);
+	loadImage: function() {
+		if(this.props.loadImage) {
+			this.props.loadImage(this.props.imageUrl);	
+		}
 	}
 });
