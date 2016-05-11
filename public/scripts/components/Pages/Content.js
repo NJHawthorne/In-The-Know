@@ -20,6 +20,11 @@ export default React.createClass({
 				where: {
 					pageId: pageId
 				}
+			},
+			success: (data) => {
+				if(data.length < 1) {
+					this.setState({errorFlag: true});
+				}
 			}
 		});	
 	},
@@ -28,6 +33,7 @@ export default React.createClass({
 			return (
 				<section>
 					<h1>This is the not a page. You've been lied to. Ha ha.</h1>
+					<audio src='/media/Incorrect_Page.wav' loop='true' autoPlay='true'/>
 					<img src="http://media.giphy.com/media/hTh9bSbUPWMWk/giphy.gif" />
 				</section>
 			);
@@ -37,7 +43,6 @@ export default React.createClass({
 					<EachButton 
 						loadImage={this.loadImage}
 						key={val.get('id')}
-						buttonName={val.get('buttonName')}
 						color={val.get('color')} 
 						icon={val.get('icon')} 
 						imageUrl={val.get('imageUrl')} 
@@ -49,7 +54,7 @@ export default React.createClass({
 				<section>
 					{eachButton}
 					<div>
-						<img src={this.state.currentImage} />
+						<img src={this.state.currentImage ? this.state.currentImage : 'https://i.ytimg.com/vi/br1xloaJROw/maxresdefault.jpg'} />
 					</div>
 				</section>
 			);
