@@ -28,6 +28,9 @@ export default React.createClass({
 			}
 		});	
 	},
+	componentWillUnmount: function() {
+		this.state.buttons.off('update');
+	},
 	render: function() {
 		if(this.state.errorFlag) {
 			return (

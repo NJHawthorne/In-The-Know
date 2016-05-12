@@ -27,7 +27,7 @@ export default React.createClass({
 		});
 	},
 	componentWillUnmount: function() {
-		console.log('unmounted');
+		this.state.buttons.off('update change');
 	},
 	render: function() {
 		let currentButton = this.getCurrentButton();
@@ -82,8 +82,10 @@ export default React.createClass({
 							</select>
 						<input 
 							type='range'
-							step='5'
+							step='3'
 							ref='posLeft'
+							min='43'
+							max='96'
 							value={currentButton ? currentButton.get('posLeft') : null} 
 							onChange={this.updatePosition}/>
 						<input 
@@ -101,6 +103,8 @@ export default React.createClass({
 						<button onClick={this.submitButton}>Submit</button>
 					</form>
 				</div>
+				<p>{currentButton ? currentButton.get('question') : null}</p>
+				<p>{currentButton ? currentButton.get('answer') : null}</p>
 				<div>
 					<img src={currentButton ? currentButton.get('imageUrl') : null} />
 				</div>
