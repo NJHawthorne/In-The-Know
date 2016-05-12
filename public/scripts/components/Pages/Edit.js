@@ -95,6 +95,9 @@ export default React.createClass({
 						<input
 							type='submit'
 							onClick={this.handleFilestack} />
+						<input
+							type='submit'
+							onClick={this.editQuestionAnswer} />
 						<button onClick={this.submitButton}>Submit</button>
 					</form>
 				</div>
@@ -189,5 +192,10 @@ export default React.createClass({
 		  		console.log(FPError.toString()); //- print errors to console
 		   	}
 		); 
+	},
+	editQuestionAnswer: function(e) {
+		e.preventDefault();
+		let currentButton = this.getCurrentButton();
+		console.log(`${currentButton.get('question')}: ${currentButton.get('answer')}`);
 	}
 });
