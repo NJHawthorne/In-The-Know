@@ -28,12 +28,12 @@ exports.seed = function(knex, Promise) {
 				.then(pageId => {
 					pageId = pageId[0];
 					return Promise.join(
-						knex('buttons').insert({ createdAt: date, buttonName: 'Stark', pageId: 1, icon: 'fa-tree', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://40.media.tumblr.com/tumblr_lpoez2k1ap1qhq895o1_500.jpg'}),
-			    		knex('buttons').insert({ createdAt: date, buttonName: 'Lannister', pageId: 1, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://25.media.tumblr.com/tumblr_mbn1dhxNxa1rtug9eo7_1280.jpg'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'Targaryen', pageId: 1, icon: 'fa-fire', color: 'red', posTop: 53, posLeft: 7, imageUrl: 'http://winteriscoming.net/wp-content/uploads/2016/02/House-Targ.-Game-of-Thrones-810x569.jpg'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'Bolton', pageId: 1, icon: 'fa-male', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'http://vignette2.wikia.nocookie.net/gameofthrones/images/c/cf/House_Bolton_slider_HBO.jpg/revision/latest?cb=20130429043504'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'High Sparrow', pageId: 1, icon: 'fa-twitter', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'Dothraki', pageId: 1, icon: 'fa-ship', color: 'brown', posTop: 60, posLeft: 30, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
+						knex('buttons').insert({ createdAt: date, buttonName: 'Stark', question: 'How many starks are currently left?', answer: '5', pageId: 1, icon: 'fa-tree', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://40.media.tumblr.com/tumblr_lpoez2k1ap1qhq895o1_500.jpg'}),
+			    		knex('buttons').insert({ createdAt: date, buttonName: 'Lannister', question: 'Where do the Lannisters call home?', answer: 'casterly rock', pageId: 1, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://25.media.tumblr.com/tumblr_mbn1dhxNxa1rtug9eo7_1280.jpg'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'Targaryen', question: 'What was the name of the dragon Danaerys rode away on?', answer: 'drogon',pageId: 1, icon: 'fa-fire', color: 'red', posTop: 53, posLeft: 7, imageUrl: 'http://winteriscoming.net/wp-content/uploads/2016/02/House-Targ.-Game-of-Thrones-810x569.jpg'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'Bolton', question: 'Which Stark do the Boltons currently have hostage in Winterfell?', answer: 'rickon', pageId: 1, icon: 'fa-male', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'http://vignette2.wikia.nocookie.net/gameofthrones/images/c/cf/House_Bolton_slider_HBO.jpg/revision/latest?cb=20130429043504'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'High Sparrow', question: 'How many gods does the High Sparrow worship?', answer: '7',pageId: 1, icon: 'fa-twitter', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'Dothraki', question: 'Who was the Khal who married Danaerys in season one?', answer: 'drogo', pageId: 1, icon: 'fa-ship', color: 'brown', posTop: 60, posLeft: 30, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
 					);
 				})
 			);
@@ -66,12 +66,12 @@ exports.seed = function(knex, Promise) {
 				.then(pageId => {
 					pageId = pageId[0];
 					return Promise.join(
-						knex('buttons').insert({ createdAt: date, buttonName: 'Quark', pageId: 2, icon: 'fa-tree', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://40.media.tumblr.com/tumblr_lpoez2k1ap1qhq895o1_500.jpg'}),
-			    		knex('buttons').insert({ createdAt: date, buttonName: 'Lannister', pageId: 2, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://25.media.tumblr.com/tumblr_mbn1dhxNxa1rtug9eo7_1280.jpg'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'Targaryen', pageId: 2, icon: 'fa-fire', color: 'red', posTop: 53, posLeft: 7, imageUrl: 'http://winteriscoming.net/wp-content/uploads/2016/02/House-Targ.-Game-of-Thrones-810x569.jpg'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'Bolton', pageId: 2, icon: 'fa-male', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'http://vignette2.wikia.nocookie.net/gameofthrones/images/c/cf/House_Bolton_slider_HBO.jpg/revision/latest?cb=20130429043504'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'High Sparrow', pageId: 2, icon: 'fa-twitter', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'Dothraki', pageId: 2, icon: 'fa-ship', color: 'brown', posTop: 60, posLeft: 30, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
+						knex('buttons').insert({ createdAt: date, buttonName: 'Quark', question: 'How many starks are currently left?', answer: '5', pageId: 2, icon: 'fa-tree', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://40.media.tumblr.com/tumblr_lpoez2k1ap1qhq895o1_500.jpg'}),
+			    		knex('buttons').insert({ createdAt: date, buttonName: 'Lannister', question: 'Where do the Lannisters call home?', answer: 'casterly rock', pageId: 2, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://25.media.tumblr.com/tumblr_mbn1dhxNxa1rtug9eo7_1280.jpg'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'Targaryen', question: 'What was the name of the dragon Danaerys rode away on?', answer: 'drogon',pageId: 2, icon: 'fa-fire', color: 'red', posTop: 53, posLeft: 7, imageUrl: 'http://winteriscoming.net/wp-content/uploads/2016/02/House-Targ.-Game-of-Thrones-810x569.jpg'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'Bolton', question: 'Which Stark do the Boltons currently have hostage in Winterfell?', answer: 'rickon', pageId: 2, icon: 'fa-male', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'http://vignette2.wikia.nocookie.net/gameofthrones/images/c/cf/House_Bolton_slider_HBO.jpg/revision/latest?cb=20130429043504'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'High Sparrow', question: 'How many gods does the High Sparrow worship?', answer: '7',pageId: 2, icon: 'fa-twitter', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'Dothraki', question: 'Who was the Khal who married Danaerys in season one?', answer: 'drogo', pageId: 2, icon: 'fa-ship', color: 'brown', posTop: 60, posLeft: 30, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
 					);
 				})
 			);
@@ -84,12 +84,12 @@ exports.seed = function(knex, Promise) {
 				.then(pageId => {
 					pageId = pageId[0];
 					return Promise.join(
-						knex('buttons').insert({ createdAt: date, buttonName: 'Snark', pageId: 3, icon: 'fa-tree', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://40.media.tumblr.com/tumblr_lpoez2k1ap1qhq895o1_500.jpg'}),
-			    		knex('buttons').insert({ createdAt: date, buttonName: 'Lannister', pageId: 3, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://25.media.tumblr.com/tumblr_mbn1dhxNxa1rtug9eo7_1280.jpg'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'Targaryen', pageId: 3, icon: 'fa-fire', color: 'red', posTop: 53, posLeft: 7, imageUrl: 'http://winteriscoming.net/wp-content/uploads/2016/02/House-Targ.-Game-of-Thrones-810x569.jpg'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'Bolton', pageId: 3, icon: 'fa-male', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'http://vignette2.wikia.nocookie.net/gameofthrones/images/c/cf/House_Bolton_slider_HBO.jpg/revision/latest?cb=20130429043504'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'High Sparrow', pageId: 3, icon: 'fa-twitter', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
-					    knex('buttons').insert({ createdAt: date, buttonName: 'Dothraki', pageId: 3, icon: 'fa-ship', color: 'brown', posTop: 60, posLeft: 30, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
+						knex('buttons').insert({ createdAt: date, buttonName: 'Snark', question: 'How many starks are currently left?', answer: '5', pageId: 3, icon: 'fa-tree', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://40.media.tumblr.com/tumblr_lpoez2k1ap1qhq895o1_500.jpg'}),
+			    		knex('buttons').insert({ createdAt: date, buttonName: 'Lannister', question: 'Where do the Lannisters call home?', answer: 'casterly rock', pageId: 3, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://25.media.tumblr.com/tumblr_mbn1dhxNxa1rtug9eo7_1280.jpg'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'Targaryen', question: 'What was the name of the dragon Danaerys rode away on?', answer: 'drogon',pageId: 3, icon: 'fa-fire', color: 'red', posTop: 53, posLeft: 7, imageUrl: 'http://winteriscoming.net/wp-content/uploads/2016/02/House-Targ.-Game-of-Thrones-810x569.jpg'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'Bolton', question: 'Which Stark do the Boltons currently have hostage in Winterfell?', answer: 'rickon', pageId: 3, icon: 'fa-male', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'http://vignette2.wikia.nocookie.net/gameofthrones/images/c/cf/House_Bolton_slider_HBO.jpg/revision/latest?cb=20130429043504'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'High Sparrow', question: 'How many gods does the High Sparrow worship?', answer: '7',pageId: 3, icon: 'fa-twitter', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
+					    knex('buttons').insert({ createdAt: date, buttonName: 'Dothraki', question: 'Who was the Khal who married Danaerys in season one?', answer: 'drogo', pageId: 3, icon: 'fa-ship', color: 'brown', posTop: 60, posLeft: 30, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
 					);
 				})
 			);
