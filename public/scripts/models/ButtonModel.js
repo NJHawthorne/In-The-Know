@@ -10,7 +10,8 @@ export default Backbone.Model.extend({
 		posLeft: 0,
 		imageUrl: 'http://kyiv.ninja/wp-content/themes/kyiv-ninja/images/default-thumb.gif',
 		question: '',
-		answer: ''
+		answer: '',
+		position: 0
 	},
 	urlRoot: '/api/v1/button',
 	idAttribute: 'id'
