@@ -24,7 +24,6 @@ export default React.createClass({
 				<nav>
 					<Link to="/">Home page</Link>
 					<Link to="/login">Login Page</Link>
-					<Link to="/register">Register Page</Link>
 				</nav>
 			);
 		}
