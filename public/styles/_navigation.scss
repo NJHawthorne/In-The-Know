@@ -1,0 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,900,700|Merriweather+Sans:400,700);
+@import 'variables';
+
+nav {
+	background-color: $color-main-black;
+	padding: 1em;
+	a {
+		text-decoration: none;
+		font-family: 'Lato';
+		font-weight: 700;
+		color: #fff;
+		padding: 1em;
+	}
+}
