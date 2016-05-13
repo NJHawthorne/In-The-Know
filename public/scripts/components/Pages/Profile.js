@@ -45,15 +45,15 @@ export default React.createClass({
 						lastName={this.state.user.get('lastName')}
 						username={this.state.user.get('username')}
 						email={this.state.user.get('email')} />
+					<form onSubmit={this.addPage}>
+						<input
+							type='text'
+							placeholder='Page name'
+							ref='pageName' />
+						<button type='submit' />
+					</form>
 					<section>
 						{eachPage}
-						<form onSubmit={this.addPage}>
-							<input
-								type='text'
-								placeholder='Page name'
-								ref='pageName' />
-							<button type='submit' />
-						</form>
 					</section>
 				</section>
 			);

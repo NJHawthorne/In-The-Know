@@ -12,39 +12,37 @@ export default React.createClass({
 		let color = this.props.color;
 		let topPosition = this.props.posTop;
 		let leftPosition = this.props.posLeft;
-		let iconStyles = {};
-		if(this.props.buttonName) {
-			iconStyles = {
-				color: color, 
-				position: 'absolute', 
-				top: topPosition+'%',
-				left: leftPosition+'%'
-			};
+		let iconStyles = {
+			color: color, 
+			position: 'absolute', 
+			top: topPosition+'%',
+			left: leftPosition+'%'
+		};
+		if(this.props.updatePosition) {
+			return (
+				<section>
+					<div style={iconStyles} onClick={this.openModal}>
+						<i className={iconClasses} />
+					</div>
+					<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
+						<p>Question {this.props.position}</p>
+						<p>{this.props.question}</p>
+						<input
+							type='text'
+							placeholder='Answer...'
+							ref='answer' />
+						<button onClick={this.verifyAnswer}>Verify Answer</button>
+					</Rayon>
+				</section>
+			);
 		} else {
-			iconStyles = {
-				color: color, 
-				position: 'absolute', 
-				top: topPosition+'%',
-				left: leftPosition+'%'
-			};
-		}
-		return (
-			<section>
-				<div style={iconStyles} onClick={this.openModal}>
+			return (
+				<div style={iconStyles}>
 					<i className={iconClasses} />
 					<p>{this.props.position ? this.props.position : null} {this.props.buttonName ? this.props.buttonName : null}</p>
 				</div>
-				<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
-					<p>Question {this.props.position}</p>
-					<p>{this.props.question}</p>
-					<input
-						type='text'
-						placeholder='Answer...'
-						ref='answer' />
-					<button onClick={this.verifyAnswer}>Verify Answer</button>
-				</Rayon>
-			</section>
-		);
+			);
+		}
 	},
 	loadImage: function() {
 		if(this.props.loadImage) {
@@ -63,16 +61,16 @@ export default React.createClass({
 	},
 	verifyAnswer: function(e) {
 		e.preventDefault();
-		let userAnswer = (this.refs.answer.value).toLowerCase;
-		let correctAnswer = (this.props.answer).toLowerCase;
+		let userAnswer = this.refs.answer.value.toLowerCase();
+		let correctAnswer = this.props.answer.toLowerCase();
 		if(userAnswer === correctAnswer) {
 			let newPosition = this.props.position;
-			console.log(typeof newPosition);
 			newPosition += 1;
 			this.props.loadImage(this.props.imageUrl);
 			this.props.updatePosition(newPosition);
 		} else {
 			this.props.loadImage('http://renewaldynamics.com/wp-content/uploads/2010/06/Sad-Sack.jpg');
 		}
+		this.closeModal();
 	}
 });
