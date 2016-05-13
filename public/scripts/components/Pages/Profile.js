@@ -44,7 +44,8 @@ export default React.createClass({
 					<BasicInfo 
 						firstName={this.state.user.get('firstName')}
 						lastName={this.state.user.get('lastName')}
-						username={this.state.user.get('username')}/>
+						username={this.state.user.get('username')}
+						email={this.state.user.get('email')} />
 					<section>
 						{eachPage}
 						<form onSubmit={this.addPage}>
@@ -55,9 +56,6 @@ export default React.createClass({
 							<button type='submit' />
 						</form>
 					</section>
-					<AccountSettings 
-						email={this.state.user.get('email')}
-						id={this.state.user.get('id')}/>
 				</section>
 			);
 		}

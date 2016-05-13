@@ -37,6 +37,7 @@ export default React.createClass({
 				return (
 					<EachButton 
 						key={val.get('id')}
+						position={val.get('position')}
 						buttonName={val.get('buttonName')}
 						color={val.get('color')} 
 						icon={val.get('icon')} 
@@ -83,6 +84,11 @@ export default React.createClass({
 								<option key='10' value='fa-spinner'>Spinner</option>
 							</select>
 						<input 
+							type='number'
+							ref='position'
+							value={currentButton ? currentButton.get('position') : null}
+							onChange={this.updateOrder} />
+						<input 
 							type='range'
 							step='3'
 							ref='posLeft'
@@ -99,14 +105,21 @@ export default React.createClass({
 						<input
 							type='submit'
 							onClick={this.handleFilestack} />
-						<input
-							type='submit'
-							onClick={this.editQuestionAnswer} />
 						<button onClick={this.submitButton}>Submit</button>
 					</form>
 				</div>
 				<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
-					<p>THE MODAL WORKS WOO YEAH WOO</p>
+						<input
+							type='text'
+							ref='question'
+							value={currentButton ? currentButton.get('question') : null}
+							onChange={this.modifyQuestion} />
+						<input
+							type='text'
+							ref='answer'
+							value={currentButton ? currentButton.get('answer') : null}
+							onChange={this.modifyAnswer} />
+						<button onClick={this.closeModal}>Close</button>
 				</Rayon>
 				<button onClick={this.openModal}>Open Modal</button>
 				<p>{currentButton ? currentButton.get('question') : null}</p>
@@ -184,6 +197,30 @@ export default React.createClass({
 			});
 		}
 	},
+	updateOrder: function(e) {
+		let currentButton = this.getCurrentButton();
+		if(currentButton) {
+			currentButton.set({
+				position: e.target.value
+			});
+		}
+	},
+	modifyQuestion: function(e) {
+		let currentButton = this.getCurrentButton();
+		if(currentButton) {
+			currentButton.set({
+				question: e.target.value
+			});
+		}
+	},
+	modifyAnswer: function(e) {
+		let currentButton = this.getCurrentButton();
+		if(currentButton) {
+			currentButton.set({
+				answer: e.target.value
+			});
+		}
+	},
 	handleFilestack: function(e) {
 		e.preventDefault();
 		let currentButton = this.getCurrentButton();
@@ -202,11 +239,6 @@ export default React.createClass({
 		  		console.log(FPError.toString()); //- print errors to console
 		   	}
 		); 
-	},
-	editQuestionAnswer: function(e) {
-		e.preventDefault();
-		let currentButton = this.getCurrentButton();
-		console.log(`${currentButton.get('question')}: ${currentButton.get('answer')}`);
 	},
 	openModal: function() {
 		this.setState({

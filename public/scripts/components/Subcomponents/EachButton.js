@@ -16,7 +16,7 @@ export default React.createClass({
 			};
 		} else {
 			iconStyles = {
-				color: '#fff', 
+				color: color, 
 				position: 'absolute', 
 				top: topPosition+'%',
 				left: leftPosition+'%'
@@ -25,7 +25,7 @@ export default React.createClass({
 		return (
 			<div style={iconStyles} onClick={this.loadImage}>
 				<i className={iconClasses} />
-				<p>{this.props.buttonName ? this.props.buttonName : null}</p>
+				<p>{this.props.position ? this.props.position : null} {this.props.buttonName ? this.props.buttonName : null}</p>
 			</div>
 		);
 	},
