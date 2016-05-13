@@ -19,6 +19,7 @@ export default React.createClass({
 					<Link to="/">Home page</Link>
 					<a href="#" onClick={this.handleLogout}>Logout</a>
 					<Link to={`/profile/${this.state.user.get('id')}`}>Profile page</Link>
+					<Link to="/quizzes">View Quizzes</Link>
 				</nav>
 			);
 		} else {
@@ -26,6 +27,7 @@ export default React.createClass({
 				<nav>
 					<Link to="/">Home page</Link>
 					<a href="#" onClick={this.openModal}>Login</a>
+					<Link to="/quizzes">View Quizzes</Link>
 					<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
 						<form onSubmit={this.handleLogin}>
 							<input

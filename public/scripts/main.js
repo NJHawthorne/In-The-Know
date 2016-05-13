@@ -23,6 +23,7 @@ import Content from './components/pages/Content';
 import Home from './components/pages/Home';
 import App from './components/App';
 import Login from './components/pages/Login';
+import ViewQuizzes from './components/pages/ViewQuizzes';
 
 const router = (
 	<Router history={browserHistory}>
@@ -32,6 +33,7 @@ const router = (
 			<Route path="/edit/:pageId" component={Edit}/>
 			<Route path="/content/:pageId" component={Content}/>
 			<Route path="/login" component={Login}/>
+			<Route path="/quizzes" component={ViewQuizzes}/>
 		</Route>
 	</Router>
 );
