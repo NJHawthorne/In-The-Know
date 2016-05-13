@@ -58,7 +58,7 @@ export default React.createClass({
 						<select ref='button' onChange={this.updateCurrentButton}>
 							<option key={0} value="selectButton">Select a button</option>
 							{buttonListing}
-							<option key='9' value="new">Make a new button</option>
+							<option key='-1' value="new">Make a new button</option>
 						</select>
 						<input
 							type='text'
@@ -157,7 +157,7 @@ export default React.createClass({
 	updatePosition: function() {
 		let currentButton = this.getCurrentButton();
 		if(currentButton) {
-			currentButton.set({
+			currentButton.save({
 				posLeft: this.refs.posLeft.value,
 				posTop: this.refs.posTop.value
 			});
@@ -176,7 +176,7 @@ export default React.createClass({
 	changeName: function(e) {
 		let currentButton = this.getCurrentButton();
 		if(currentButton) {
-			currentButton.set({
+			currentButton.save({
 				buttonName: e.target.value
 			});
 		}
@@ -184,7 +184,7 @@ export default React.createClass({
 	changeColor: function(e) {
 		let currentButton = this.getCurrentButton();
 		if(currentButton) {
-			currentButton.set({
+			currentButton.save({
 				color: e.target.value
 			});
 		}
@@ -192,7 +192,7 @@ export default React.createClass({
 	changeIcon: function(e) {
 		let currentButton = this.getCurrentButton();
 		if(currentButton) {
-			currentButton.set({
+			currentButton.save({
 				icon: e.target.value
 			});
 		}
@@ -200,7 +200,7 @@ export default React.createClass({
 	updateOrder: function(e) {
 		let currentButton = this.getCurrentButton();
 		if(currentButton) {
-			currentButton.set({
+			currentButton.save({
 				position: e.target.value
 			});
 		}
@@ -208,7 +208,7 @@ export default React.createClass({
 	modifyQuestion: function(e) {
 		let currentButton = this.getCurrentButton();
 		if(currentButton) {
-			currentButton.set({
+			currentButton.save({
 				question: e.target.value
 			});
 		}
@@ -216,7 +216,7 @@ export default React.createClass({
 	modifyAnswer: function(e) {
 		let currentButton = this.getCurrentButton();
 		if(currentButton) {
-			currentButton.set({
+			currentButton.save({
 				answer: e.target.value
 			});
 		}
@@ -231,7 +231,7 @@ export default React.createClass({
 		    	services: ['COMPUTER']
 		   	},
 		   	(test) => {
-		     	currentButton.set({
+		     	currentButton.save({
 		     		imageUrl: test.url
 		     	});
 		   	},

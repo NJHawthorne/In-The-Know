@@ -7,7 +7,8 @@ export default React.createClass({
 		return {
 			buttons: buttons,
 			errorFlag: false,
-			currentImage: ''
+			currentImage: '',
+			position: 1
 		};
 	},
 	componentDidMount: function() {
@@ -41,10 +42,21 @@ export default React.createClass({
 				</section>
 			);
 		} else {
-			let eachButton = this.state.buttons.map((val, i, arr) => {
+			let answeredButtons = this.state.buttons.filter((val, i, arr) => {
+				if(!val.get('position') | val.get('position') > this.state.position) {
+					return false;
+				} else {
+					return true;
+				}
+			});
+			let eachButton = answeredButtons.map((val, i, arr) => {
 				return (
 					<EachButton 
 						loadImage={this.loadImage}
+						updatePosition={this.updatePosition}
+						position={val.get('position')}
+						question={val.get('question')}
+						answer={val.get('answer')}
 						key={val.get('id')}
 						color={val.get('color')} 
 						icon={val.get('icon')} 
@@ -65,5 +77,8 @@ export default React.createClass({
 	},
 	loadImage: function(imageUrl) {
 		this.setState({currentImage: imageUrl});
+	},
+	updatePosition: function(newPosition) {
+		this.setState({position: newPosition});
 	}
 });
