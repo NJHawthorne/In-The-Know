@@ -1,7 +1,6 @@
 import React from 'react';
 import BasicInfo from './../Subcomponents/BasicInfo.js';
 import UsersPages from './../Subcomponents/UsersPages.js';
-import AccountSettings from './../Subcomponents/AccountSettings.js';
 import user from './../../models/UserModel';
 import $ from 'jquery';
 import Page from './../../collections/PageCollection';
