@@ -3,6 +3,7 @@ import user from './../../models/UserModel';
 import EachButton from './../subcomponents/EachButton';
 import ButtonCollection from './../../collections/ButtonCollection';
 import Page from './../../collections/PageCollection';
+import Rayon from 'rayon';
 
 export default React.createClass({
 	getInitialState: function() {
@@ -10,7 +11,8 @@ export default React.createClass({
 			user: user,
 			buttons: ButtonCollection,
 			page: Page,
-			selectedButtonId: null
+			selectedButtonId: null,
+			modalVisible: false
 		};
 	},
 	componentDidMount: function() {
@@ -103,6 +105,10 @@ export default React.createClass({
 						<button onClick={this.submitButton}>Submit</button>
 					</form>
 				</div>
+				<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
+					<p>THE MODAL WORKS WOO YEAH WOO</p>
+				</Rayon>
+				<button onClick={this.openModal}>Open Modal</button>
 				<p>{currentButton ? currentButton.get('question') : null}</p>
 				<p>{currentButton ? currentButton.get('answer') : null}</p>
 				<div>
@@ -201,5 +207,15 @@ export default React.createClass({
 		e.preventDefault();
 		let currentButton = this.getCurrentButton();
 		console.log(`${currentButton.get('question')}: ${currentButton.get('answer')}`);
+	},
+	openModal: function() {
+		this.setState({
+			modalVisible: true
+		});
+	},
+	closeModal: function() {
+		this.setState({
+			modalVisible: false
+		});
 	}
 });
