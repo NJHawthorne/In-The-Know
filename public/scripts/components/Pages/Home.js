@@ -19,31 +19,41 @@ export default React.createClass({
 				<button onClick={this.openModal}>Sign Up</button>
 				<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal} >
 					<form onSubmit={this.handleRegister}>
-						<input
-							placeholder="First name"
-							ref="firstName"
-							type="text"
-							required="required" />
-						<input
-							placeholder="Last name"
-							ref="lastName"
-							type="text"
-							required="required" />
-						<input
-							placeholder="Username"
-							ref="username"
-							type="text"
-							required="required" />
-						<input
-							placeholder="Email"
-							ref="email"
-							type="text"
-							required="required" />
-						<input
-							placeholder="Password"
-							ref="password"
-							type="password"
-							required="required" />
+						<label>First name
+							<input
+								placeholder="First name"
+								ref="firstName"
+								type="text"
+								required="required" />
+						</label>
+						<label>Last name
+							<input
+								placeholder="Last name"
+								ref="lastName"
+								type="text"
+								required="required" />
+						</label>
+						<label>Username
+							<input
+								placeholder="Username"
+								ref="username"
+								type="text"
+								required="required" />
+						</label>
+						<label>Email Address
+							<input
+								placeholder="Email"
+								ref="email"
+								type="text"
+								required="required" />
+						</label>
+						<label>Password
+							<input
+								placeholder="Password"
+								ref="password"
+								type="password"
+								required="required" />
+						</label>
 					<button
 						type="submit">Register</button>
 				</form>

@@ -1,0 +1,33 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,900,700|Merriweather+Sans:400,700);
+@import 'variables';
+
+.eachQuiz {
+	position: relative;
+	margin-bottom: 4rem;
+	div {
+		height: 1px;
+		background-color: $color-main-black;
+		width: 100%;
+	}
+	p {
+		margin: 0;
+		margin-left: 1rem;
+		margin-top: 0.75rem;
+		font-family: 'Lato';
+		font-weight: 700;
+		color: $color-main-black;
+		font-size: 1.5rem;
+	}
+	a {
+		text-decoration: none;
+		color: #fff;
+		padding: 0.5rem 2rem;
+		font-family: 'Merriweather Sans';
+		background-color: $color-main-blue;
+		border-radius: 0.5rem;
+		border: 1px solid $color-main-blue;
+		position: absolute;
+		top: 1.4rem;
+		right: 1rem;
+	}
+}

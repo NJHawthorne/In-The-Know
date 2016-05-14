@@ -1,4 +1,5 @@
 import React from 'react';
+import Rayon from 'rayon';
 import BasicInfo from './../Subcomponents/BasicInfo.js';
 import UsersPages from './../Subcomponents/UsersPages.js';
 import user from './../../models/UserModel';
@@ -11,7 +12,8 @@ export default React.createClass({
 		return {
 			user: user,
 			pages: [],
-			pageCollection: Page
+			pageCollection: Page,
+			modalVisible: false
 		};
 	},
 	componentDidMount: function() {
@@ -33,25 +35,31 @@ export default React.createClass({
 				<UsersPages 
 					key={i}
 					pageId={val.id}
-					pageName={val.pageName} />
+					pageName={val.pageName} 
+					editable={true}/>
 			);
 		});
 		if(this.state.user.get('id') == this.props.params.userId){
 			return (
 				<section>
-					<h1>This is the Profile page!</h1>
 					<BasicInfo 
 						firstName={this.state.user.get('firstName')}
 						lastName={this.state.user.get('lastName')}
 						username={this.state.user.get('username')}
 						email={this.state.user.get('email')} />
-					<form onSubmit={this.addPage}>
-						<input
-							type='text'
-							placeholder='Page name'
-							ref='pageName' />
-						<button type='submit' />
-					</form>
+					<button className='button button-outline' type='submit' onClick={this.openModal}>Create Page</button>
+					<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
+						<form onSubmit={this.addPage}>
+							<label>What's your page called?
+								<input
+									type='text'
+									placeholder='Page name'
+									required='required'
+									ref='pageName' />
+							</label>
+							<button className='button button-outline' type='submit'>Create</button>
+						</form>
+					</Rayon>
 					<section>
 						{eachPage}
 					</section>
@@ -68,10 +76,17 @@ export default React.createClass({
 			userId: userId
 		}, {
 			success: (data) => {
+					this.closeModal();
 					let newId = data.get('id');
 					browserHistory.push(`/edit/${newId}`);
 				}
 			}
 		);
+	},
+	openModal: function() {
+		this.setState({modalVisible: true});
+	},
+	closeModal: function() {
+		this.setState({modalVisible: false});
 	}
 });

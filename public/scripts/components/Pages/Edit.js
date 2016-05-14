@@ -109,16 +109,22 @@ export default React.createClass({
 					</form>
 				</div>
 				<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
-						<input
-							type='text'
-							ref='question'
-							value={currentButton ? currentButton.get('question') : null}
-							onChange={this.modifyQuestion} />
-						<input
-							type='text'
-							ref='answer'
-							value={currentButton ? currentButton.get('answer') : null}
-							onChange={this.modifyAnswer} />
+						<label>Question
+							<input
+								type='text'
+								ref='question'
+								placeholder='Question'
+								value={currentButton ? currentButton.get('question') : null}
+								onChange={this.modifyQuestion} />
+						</label>
+						<label>Answer
+							<input
+								type='text'
+								ref='answer'
+								placeholder='Answer'
+								value={currentButton ? currentButton.get('answer') : null}
+								onChange={this.modifyAnswer} />
+						</label>
 						<button onClick={this.closeModal}>Close</button>
 				</Rayon>
 				<button onClick={this.openModal}>Open Modal</button>
