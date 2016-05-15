@@ -71,6 +71,7 @@ export default React.createClass({
 						</form>
 					</Rayon>
 					<section>
+						<h1 className='yourQuizzes'>Your Quizzes</h1>
 						{eachPage}
 					</section>
 				</section>

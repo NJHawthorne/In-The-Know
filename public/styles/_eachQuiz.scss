@@ -1,6 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,900,700|Merriweather+Sans:400,700);
 @import 'variables';
 
+.yourQuizzes {
+	font-family: 'Lato';
+	font-size: 1.5rem;
+	color: $color-darker-blue;
+	margin: 0 0 1rem 1rem;
+}
 .eachQuiz {
 	position: relative;
 	div {
@@ -13,7 +19,7 @@
 		vertical-align: top;
 		margin: 0;
 		margin-left: 1rem;
-		margin-top: 0.75rem;
+		margin-top: 1rem;
 		font-family: 'Lato';
 		font-weight: 700;
 		color: $color-main-black;
@@ -22,7 +28,7 @@
 	}
 	.description {
 		display: inline-block;
-		margin: 0.75rem auto 2rem auto;
+		margin: 1rem auto 2rem auto;
 		width: 35%;
 		font-family: 'Merriweather Sans';
 		font-weight: 400;
