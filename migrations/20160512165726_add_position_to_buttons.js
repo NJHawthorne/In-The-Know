@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  	return knex.schema.table('users', function(t) {
+  	return knex.schema.table('buttons', function(t) {
 		t.dropColumn('position');
 	});
 };

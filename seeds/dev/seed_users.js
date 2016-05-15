@@ -23,7 +23,7 @@ exports.seed = function(knex, Promise) {
 		.then(userId => {
 			userId = userId[0];
 			return Promise.join(
-				knex('pages').insert({ createdAt: date, pageName: 'Game of Thrones', userId: 1})
+				knex('pages').insert({ createdAt: date, pageName: 'Game of Thrones', userId: 1, description: 'A simple quiz with Game of Thrones trivia. *WARNING* Does contain spoiler information from Season 6. Do not take if you\'re not caught up'})
 				.returning('id')
 				.then(pageId => {
 					pageId = pageId[0];
@@ -61,7 +61,7 @@ exports.seed = function(knex, Promise) {
 		.then(userId => {
 			userId = userId[0];
 			return Promise.join(
-				knex('pages').insert({ createdAt: date, pageName: 'Game of Awesomeness', userId: 2})
+				knex('pages').insert({ createdAt: date, pageName: 'Game of Awesomeness', userId: 2, description: 'A simple quiz with Game of Thrones trivia. *WARNING* Does contain spoiler information from Season 6. Do not take if you\'re not caught up'})
 				.returning('id')
 				.then(pageId => {
 					pageId = pageId[0];
@@ -79,7 +79,7 @@ exports.seed = function(knex, Promise) {
 		.then(userId => {
 			userId = userId[0];
 			return Promise.join(
-				knex('pages').insert({ createdAt: date, pageName: 'SUPER HAPPY FUN TIME YEAH', userId: 2})
+				knex('pages').insert({ createdAt: date, pageName: 'SUPER HAPPY FUN TIME YEAH', userId: 2, description: 'A simple quiz with Game of Thrones trivia. *WARNING* Does contain spoiler information from Season 6. Do not take if you\'re not caught up'})
 				.returning('id')
 				.then(pageId => {
 					pageId = pageId[0];
