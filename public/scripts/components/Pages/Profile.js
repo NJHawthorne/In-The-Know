@@ -49,7 +49,7 @@ export default React.createClass({
 						lastName={this.state.user.get('lastName')}
 						username={this.state.user.get('username')}
 						email={this.state.user.get('email')} />
-					<button className='button button-outline' type='submit' onClick={this.openModal}>Create Page</button>
+					<button className='button button-outline createPage' type='submit' onClick={this.openModal}>Create Page</button>
 					<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
 						<form onSubmit={this.addPage}>
 							<label>What's your quiz called?

@@ -1,0 +1,42 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,900,700|Merriweather+Sans:400,700);
+@import 'variables';
+
+.basicInfo {
+	margin-bottom: 2rem;
+	display: inline-block;
+	width: 80%;
+	h1 {
+		font-size: 1.5em;
+		margin: 0.5em 0 1.5em 0.5em;
+		font-family: 'Lato';
+		font-weight: 700;
+	}
+	p {
+		margin: 0.5em 0 1.25em 0.5em;
+		font-family: 'Merriweather Sans';
+		font-size: 1.15rem;
+		font-weight: 400;
+	}
+}
+
+.createPage {
+	background-color: $color-main-blue;
+    border: .1rem solid $color-main-blue;
+    font-family: 'Lato';
+    border-radius: 0.5rem;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.15rem;
+    font-weight: 700;
+    height: 2.5rem;
+    letter-spacing: .1rem;
+    line-height: 2.5rem;
+    padding: 0 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.createPage:hover {
+	background-color: $color-darker-blue;
+	border: .1rem solid $color-darker-blue;
+}

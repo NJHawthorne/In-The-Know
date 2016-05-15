@@ -9,6 +9,8 @@
 		width: 100%;
 	}
 	p {
+		display: inline-block;
+		vertical-align: top;
 		margin: 0;
 		margin-left: 1rem;
 		margin-top: 0.75rem;
@@ -16,9 +18,11 @@
 		font-weight: 700;
 		color: $color-main-black;
 		font-size: 1.5rem;
+		width: 33%;
 	}
 	.description {
-		margin: 0 auto 2rem auto;
+		display: inline-block;
+		margin: 0.75rem auto 2rem auto;
 		width: 35%;
 		font-family: 'Merriweather Sans';
 		font-weight: 400;
