@@ -26,11 +26,12 @@ export default React.createClass({
 					</div>
 					<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
 						<p>Question {this.props.position}</p>
-						<p>{this.props.question}</p>
-						<input
-							type='text'
-							placeholder='Answer...'
-							ref='answer' />
+						<label>{this.props.question}
+							<input
+								type='text'
+								placeholder='Answer...'
+								ref='answer' />
+						</label>
 						<button onClick={this.verifyAnswer}>Verify Answer</button>
 					</Rayon>
 				</section>

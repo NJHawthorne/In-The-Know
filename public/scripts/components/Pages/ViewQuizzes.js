@@ -20,7 +20,8 @@ export default React.createClass({
 				<UsersPages
 					key={i}
 					pageName={val.get('pageName')} 
-					pageId={val.get('id')}/>
+					pageId={val.get('id')}
+					description={val.get('description')}/>
 			);
 		});
 		return (

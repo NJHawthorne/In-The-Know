@@ -22,7 +22,8 @@ export default React.createClass({
 				if(data[i].userId === this.state.user.get('id')) {
 					this.state.pages.push({
 						pageName: data[i].pageName,
-						id: data[i].id
+						id: data[i].id,
+						description: data[i].description
 					});
 				}
 			}
@@ -36,7 +37,8 @@ export default React.createClass({
 					key={i}
 					pageId={val.id}
 					pageName={val.pageName} 
-					editable={true}/>
+					editable={true}
+					description={val.description}/>
 			);
 		});
 		if(this.state.user.get('id') == this.props.params.userId){
@@ -50,12 +52,20 @@ export default React.createClass({
 					<button className='button button-outline' type='submit' onClick={this.openModal}>Create Page</button>
 					<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
 						<form onSubmit={this.addPage}>
-							<label>What's your page called?
+							<label>What's your quiz called?
 								<input
 									type='text'
 									placeholder='Page name'
 									required='required'
 									ref='pageName' />
+							</label>
+							<label>Describe your quiz
+								<textarea
+									type='text'
+									placeholder='Description'
+									required='required'
+									className='description'
+									ref='description' />
 							</label>
 							<button className='button button-outline' type='submit'>Create</button>
 						</form>
@@ -71,9 +81,11 @@ export default React.createClass({
 		e.preventDefault();
 		let pageName = this.refs.pageName.value;
 		let userId = this.state.user.get('id');
+		let description = this.refs.description.value;
 		this.state.pageCollection.create({
 			pageName: pageName,
-			userId: userId
+			userId: userId,
+			description: description
 		}, {
 			success: (data) => {
 					this.closeModal();

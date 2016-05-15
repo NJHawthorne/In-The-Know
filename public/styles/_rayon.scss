@@ -58,15 +58,31 @@
 		background: #ccc;
 		overflow: hidden;
 	}
+	p {
+		font-family: 'Lato';
+		font-weight: 700;
+		font-size: 1.9rem;
+		color: $color-main-black;
+		margin: 0;
+		margin-bottom: 2rem;
+	}
 	label {
 		font-family: 'Lato';
 		font-weight: 700;
 		font-size: 1.9rem;
 		color: $color-main-black;
-			input {
+		input {
 			font-family: 'Merriweather Sans';
 			width: 99%;
 			height: 2em;
+			font-size: 1.15rem;
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+		}
+		.description {
+			font-family: 'Merriweather Sans';
+			width: 99%;
+			height: 8em;
 			font-size: 1.15rem;
 			margin-bottom: 1rem;
 			margin-top: 1rem;

@@ -3,7 +3,6 @@
 
 .eachQuiz {
 	position: relative;
-	margin-bottom: 4rem;
 	div {
 		height: 1px;
 		background-color: $color-main-black;
@@ -18,7 +17,26 @@
 		color: $color-main-black;
 		font-size: 1.5rem;
 	}
-	a {
+	.description {
+		margin: 0 auto 2rem auto;
+		width: 35%;
+		font-family: 'Merriweather Sans';
+		font-weight: 400;
+		font-size: 1rem;
+	}
+	a:nth-child(4) {
+		text-decoration: none;
+		color: #fff;
+		padding: 0.5rem 2.2rem;
+		font-family: 'Merriweather Sans';
+		background-color: $color-main-blue;
+		border-radius: 0.5rem;
+		border: 1px solid $color-main-blue;
+		position: absolute;
+		top: 1.4rem;
+		right: 10.7rem;
+	}
+	a:last-child {
 		text-decoration: none;
 		color: #fff;
 		padding: 0.5rem 2rem;
@@ -28,6 +46,10 @@
 		border: 1px solid $color-main-blue;
 		position: absolute;
 		top: 1.4rem;
-		right: 1rem;
+		right: 2rem;
+	}
+	a:hover {
+		background-color: $color-darker-blue;
+		border: 1px solid $color-darker-blue;
 	}
 }

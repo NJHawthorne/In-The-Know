@@ -9,8 +9,9 @@ export default React.createClass({
 					key={this.props.key}>
 					<div></div>
 					<p>{this.props.pageName}</p>
-					<Link to={`/content/${this.props.pageId}`}>View</Link>
+					<p className='description'>{this.props.description}</p>
 					<Link to={`/edit/${this.props.pageId}`}>Edit</Link>
+					<Link to={`/content/${this.props.pageId}`}>View</Link>
 				</div>
 			);
 		} else {
@@ -19,6 +20,7 @@ export default React.createClass({
 					key={this.props.key}>
 					<div></div>
 					<p>{this.props.pageName}</p>
+					<p className='description'>{this.props.description}</p>
 					<Link to={`/content/${this.props.pageId}`}>View</Link>
 				</div>
 			);
