@@ -64,7 +64,7 @@ export default React.createClass({
 						<button onClick={this.openModal}>Add Question</button>
 					</div>
 					<div>
-						<p>Name and Icon <i class="fa fa-arrow-down" onClick={this.toggleName}/></p>
+						<p>Name and Icon<i className="fa fa-arrow-down" /></p>
 						<input
 							type='text'
 							ref='buttonName'
@@ -90,7 +90,7 @@ export default React.createClass({
 							</select>
 					</div>
 					<div>
-						<p>Order and Position</p>
+						<p>Order and Position<i className="fa fa-arrow-down" /></p>
 						<input 
 							type='number'
 							ref='position'
@@ -112,7 +112,7 @@ export default React.createClass({
 							onChange={this.updatePosition}/>
 					</div>
 					<div>
-						<p>Image and Question/Answer</p>
+						<p>Image and Question/Answer<i className="fa fa-arrow-down" /></p>
 						<button
 							type='submit'
 							onClick={this.handleFilestack}>Upload File</button>

@@ -1,0 +1,45 @@
+@import 'variables';
+
+.fa-smile-o {
+	color: $color-darker-blue;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.home-details {
+	margin-top: 2em;
+	margin-bottom: 2em;
+	margin-right: 3em;
+	border-radius: 0.4em;
+	float: right;
+	background: #fff;
+	border: 2px solid $color-main-black;
+	padding: 2em 5em 2em 5em;
+	width: 25%;
+	h1 {
+		margin-top: 0em;
+	}
+	p {
+		font-family: 'Merriweather Sans';
+		color: $color-main-black;
+	}
+	button {
+		background-color: $color-main-blue;
+	    border: .1rem solid $color-main-blue;
+	    font-family: 'Lato';
+	    border-radius: 0.5rem;
+	    color: #fff;
+	    font-size: 1.15rem;
+	    font-weight: 700;
+	    height: 2.5rem;
+	    letter-spacing: .1rem;
+	    padding: 0 2.5rem;
+	    text-transform: uppercase;
+	    float: right;
+	}
+	button:hover {
+		background-color: $color-darker-blue;
+		border: .1rem solid $color-darker-blue;
+	}
+}

@@ -14,6 +14,20 @@
 				color: $color-darker-blue;
 				font-weight: 700;
 				font-size: 1.3rem;
+				i {
+					background-color: $color-darker-blue;
+					color: #fff;
+					border-radius: 1em;
+					padding: 0.25em;
+					float: right;
+				}
+			}
+			select {
+				border: 2px solid $color-main-blue;
+				background-color: #fff;
+				color: $color-main-black;
+				line-height: normal;
+				font-family: 'Merriweather Sans';
 			}
 		}
 	}
