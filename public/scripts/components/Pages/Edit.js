@@ -64,7 +64,7 @@ export default React.createClass({
 						<button onClick={this.openModal}>Add Question</button>
 					</div>
 					<div>
-						<p>Name and Icon</p>
+						<p>Name and Icon <i class="fa fa-arrow-down" onClick={this.toggleName}/></p>
 						<input
 							type='text'
 							ref='buttonName'
@@ -297,5 +297,8 @@ export default React.createClass({
 	},
 	updateIcon: function(e) {
 		this.setState({selectedIcon: e.target.value});
+	},
+	toggleName: function() {
+		console.log('You clicked the name and icon arrow');
 	}
 });

@@ -69,7 +69,7 @@ export default React.createClass({
 				<section>
 					{eachButton}
 					<div>
-						<img src={this.state.currentImage ? this.state.currentImage : 'https://i.ytimg.com/vi/br1xloaJROw/maxresdefault.jpg'} />
+						<img src={this.state.currentImage ? this.state.currentImage : 'http://www.htmlcsscolor.com/preview/gallery/EFEFEF.png'} />
 					</div>
 				</section>
 			);
