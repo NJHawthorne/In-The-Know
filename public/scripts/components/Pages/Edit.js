@@ -272,7 +272,7 @@ export default React.createClass({
 		filepicker.setKey('ABF95lzYQqNV2ewYLYYQyz');
  		filepicker.pick({
 		    	mimetype: 'image/*',
-		    	container: 'window',
+		    	container: 'modal',
 		    	services: ['COMPUTER']
 		   	},
 		   	(test) => {
