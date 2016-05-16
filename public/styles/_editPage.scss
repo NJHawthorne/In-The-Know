@@ -1,0 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,900,700|Merriweather+Sans:400,700);
+@import 'variables';
+
+.editPage {
+	.filters {
+		width: 35%;
+		border: 1px solid $color-main-black;
+	}
+}

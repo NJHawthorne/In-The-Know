@@ -52,14 +52,14 @@ export default React.createClass({
 			);
 		});
 		return (
-			<section>
-				<div>
-					<form>
-						<select ref='button' onChange={this.updateCurrentButton}>
-							<option key={0} value="selectButton">Select a button</option>
-							{buttonListing}
-							<option key='-1' value="new">Make a new button</option>
-						</select>
+			<section className='editPage'>
+				<div className='filters'>
+					<select ref='button' onChange={this.updateCurrentButton}>
+						<option key={0} value="selectButton">Select a button</option>
+						{buttonListing}
+					</select>
+					<button onClick={this.openModal}>Add Question</button>
+					<div>
 						<input
 							type='text'
 							ref='buttonName'
@@ -83,6 +83,8 @@ export default React.createClass({
 								<option key='9' value='fa-trophy'>Trophy</option>
 								<option key='10' value='fa-spinner'>Spinner</option>
 							</select>
+					</div>
+					<div>
 						<input 
 							type='number'
 							ref='position'
@@ -102,13 +104,10 @@ export default React.createClass({
 							ref='posTop' 
 							value={currentButton ? currentButton.get('posTop') : null} 
 							onChange={this.updatePosition}/>
+					</div>
 						<input
 							type='submit'
 							onClick={this.handleFilestack} />
-						<button onClick={this.submitButton}>Submit</button>
-					</form>
-				</div>
-				<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
 						<label>Question
 							<input
 								type='text'
@@ -125,11 +124,42 @@ export default React.createClass({
 								value={currentButton ? currentButton.get('answer') : null}
 								onChange={this.modifyAnswer} />
 						</label>
-						<button onClick={this.closeModal}>Close</button>
-				</Rayon>
-				<button onClick={this.openModal}>Open Modal</button>
+					</div>
 				<p>{currentButton ? currentButton.get('question') : null}</p>
 				<p>{currentButton ? currentButton.get('answer') : null}</p>
+				<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
+					<form>
+						<label>Button Name
+							<input
+								type='text'
+								ref='buttonName'
+								value={currentButton ? currentButton.get('buttonName') : null} 
+								onChange={this.changeName} />
+						</label>
+						<label>
+							<input
+								type='color'
+								ref='color' 
+								value={currentButton ? currentButton.get('color') : null} 
+								onChange={this.changeColor} />
+						</label>
+						<select id='selectIcon' onChange={this.changeIcon}>
+							<option key='0' value='selectIcon'>Pick an icon</option>
+							<option key='1' value='fa-linux'>Penguin</option>
+							<option key='2' value='fa-beer'>Beer</option>
+							<option key='3' value='fa-diamond'>Diamond</option>
+							<option key='4' value='fa-fighter-jet'>Jet</option>
+							<option key='5' value='fa-globe'>Earth</option>
+							<option key='6' value='fa-magic'>Magic</option>
+							<option key='7' value='fa-money'>Money</option>
+							<option key='8' value='fa-paper-plane'>Paper Plane</option>
+							<option key='9' value='fa-trophy'>Trophy</option>
+							<option key='10' value='fa-spinner'>Spinner</option>
+						</select>
+						<button onClick={this.submitButton}>Submit</button>
+						<button onClick={this.closeModal}>Close</button>
+					</form>
+				</Rayon>
 				<div>
 					<img src={currentButton ? currentButton.get('imageUrl') : null} />
 				</div>
