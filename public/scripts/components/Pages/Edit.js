@@ -12,7 +12,8 @@ export default React.createClass({
 			buttons: ButtonCollection,
 			page: Page,
 			selectedButtonId: null,
-			modalVisible: false
+			modalVisible: false,
+			selectedIcon: ''
 		};
 	},
 	componentDidMount: function() {
@@ -54,12 +55,16 @@ export default React.createClass({
 		return (
 			<section className='editPage'>
 				<div className='filters'>
-					<select ref='button' onChange={this.updateCurrentButton}>
-						<option key={0} value="selectButton">Select a button</option>
-						{buttonListing}
-					</select>
-					<button onClick={this.openModal}>Add Question</button>
+					<div clasName='buttonSelect'>
+						<p>Select a button or Make a new one!</p>
+						<select ref='button' onChange={this.updateCurrentButton}>
+							<option key={0} value="selectButton">Select a button</option>
+							{buttonListing}
+						</select>
+						<button onClick={this.openModal}>Add Question</button>
+					</div>
 					<div>
+						<p>Name and Icon</p>
 						<input
 							type='text'
 							ref='buttonName'
@@ -85,6 +90,7 @@ export default React.createClass({
 							</select>
 					</div>
 					<div>
+						<p>Order and Position</p>
 						<input 
 							type='number'
 							ref='position'
@@ -105,9 +111,11 @@ export default React.createClass({
 							value={currentButton ? currentButton.get('posTop') : null} 
 							onChange={this.updatePosition}/>
 					</div>
-						<input
+					<div>
+						<p>Image and Question/Answer</p>
+						<button
 							type='submit'
-							onClick={this.handleFilestack} />
+							onClick={this.handleFilestack}>Upload File</button>
 						<label>Question
 							<input
 								type='text'
@@ -125,6 +133,7 @@ export default React.createClass({
 								onChange={this.modifyAnswer} />
 						</label>
 					</div>
+				</div>
 				<p>{currentButton ? currentButton.get('question') : null}</p>
 				<p>{currentButton ? currentButton.get('answer') : null}</p>
 				<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal}>
@@ -143,7 +152,7 @@ export default React.createClass({
 								value={currentButton ? currentButton.get('color') : null} 
 								onChange={this.changeColor} />
 						</label>
-						<select id='selectIcon' onChange={this.changeIcon}>
+						<select id='selectIcon' onChange={this.updateIcon}>
 							<option key='0' value='selectIcon'>Pick an icon</option>
 							<option key='1' value='fa-linux'>Penguin</option>
 							<option key='2' value='fa-beer'>Beer</option>
@@ -157,7 +166,6 @@ export default React.createClass({
 							<option key='10' value='fa-spinner'>Spinner</option>
 						</select>
 						<button onClick={this.submitButton}>Submit</button>
-						<button onClick={this.closeModal}>Close</button>
 					</form>
 				</Rayon>
 				<div>
@@ -173,7 +181,7 @@ export default React.createClass({
 		if(currentButton) {
 			currentButton.save({
 				buttonName: this.refs.buttonName.value,
-				icon: document.getElementById('selectIcon').value,
+				icon: this.state.selectedIcon,
 				color: this.refs.color.value,
 				posLeft: this.refs.posLeft.value,
 				posTop: this.refs.posTop.value,
@@ -182,12 +190,13 @@ export default React.createClass({
 		} else {
 			this.state.buttons.create({
 				buttonName: this.refs.buttonName.value,
-				icon: document.getElementById('selectIcon').value,
+				icon: this.state.selectedIcon,
 				color: this.refs.color.value,
 				posLeft: this.refs.posLeft.value,
 				posTop: this.refs.posTop.value,
 				pageId: this.props.params.pageId
 			});
+			this.closeModal();
 		}
 	},
 	updatePosition: function() {
@@ -272,7 +281,7 @@ export default React.createClass({
 		     	});
 		   	},
 		   	function(FPError){
-		  		console.log(FPError.toString()); //- print errors to console
+		  		console.log(FPError.toString());
 		   	}
 		); 
 	},
@@ -285,5 +294,8 @@ export default React.createClass({
 		this.setState({
 			modalVisible: false
 		});
+	},
+	updateIcon: function(e) {
+		this.setState({selectedIcon: e.target.value});
 	}
 });

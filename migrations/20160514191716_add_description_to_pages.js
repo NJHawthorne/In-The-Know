@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
   	return knex.schema.table('pages', function(t) {
-		t.text('description').notNull();
+		t.text('description').notNull().defaultTo('This is a quiz. Enjoy it!');
 	});
 };
 

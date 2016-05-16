@@ -5,5 +5,15 @@
 	.filters {
 		width: 35%;
 		border: 1px solid $color-main-black;
+		div {
+			p {
+				width: 76%;
+				margin: 1rem auto;
+				font-family: 'Lato';
+				color: $color-darker-blue;
+				font-weight: 700;
+				font-size: 1.3rem;
+			}
+		}
 	}
 }
