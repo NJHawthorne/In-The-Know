@@ -24,17 +24,17 @@ exports.seed = function(knex, Promise) {
 		})
 		.then(userId => {
 			return Promise.join(
-				knex('pages').insert({ createdAt: date, pageName: 'Game of Thrones', userId: userId1, description: 'A simple quiz with Game of Thrones trivia. *WARNING* Does contain spoiler information from Season 6. Do not take if you\'re not caught up'})
+				knex('pages').insert({ createdAt: date, pageName: 'Game of Thrones', userId: userId1, description: 'A simple quiz with Game of Thrones trivia. *WARNING* Does contain some spoiler information from Season 6. Do not take if you\'re not caught up'})
 				.returning('id')
 				.then(pageId => {
 					pageId = pageId[0];
 					return Promise.join(
-						knex('buttons').insert({ createdAt: date, position: 1, buttonName: 'Stark', question: 'How many starks are currently left?', answer: '5', pageId: pageId, icon: 'fa-tree', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://40.media.tumblr.com/tumblr_lpoez2k1ap1qhq895o1_500.jpg'}),
-			    		knex('buttons').insert({ createdAt: date, position: 2, buttonName: 'Lannister', question: 'Where do the Lannisters call home?', answer: 'casterly rock', pageId: pageId, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://25.media.tumblr.com/tumblr_mbn1dhxNxa1rtug9eo7_1280.jpg'}),
-					    knex('buttons').insert({ createdAt: date, position: 3, buttonName: 'Targaryen', question: 'What was the name of the dragon Danaerys rode away on?', answer: 'drogon',pageId: pageId, icon: 'fa-fire', color: 'red', posTop: 53, posLeft: 67, imageUrl: 'http://winteriscoming.net/wp-content/uploads/2016/02/House-Targ.-Game-of-Thrones-810x569.jpg'}),
-					    knex('buttons').insert({ createdAt: date, position: 4, buttonName: 'Bolton', question: 'Which Stark do the Boltons currently have hostage in Winterfell?', answer: 'rickon', pageId: pageId, icon: 'fa-male', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'http://vignette2.wikia.nocookie.net/gameofthrones/images/c/cf/House_Bolton_slider_HBO.jpg/revision/latest?cb=20130429043504'}),
-					    knex('buttons').insert({ createdAt: date, position: 5, buttonName: 'High Sparrow', question: 'How many gods does the High Sparrow worship?', answer: '7',pageId: pageId, icon: 'fa-twitter', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
-					    knex('buttons').insert({ createdAt: date, position: 6, buttonName: 'Dothraki', question: 'Who was the Khal who married Danaerys in season one?', answer: 'drogo', pageId: pageId, icon: 'fa-ship', color: 'brown', posTop: 60, posLeft: 80, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
+						knex('buttons').insert({ createdAt: date, position: 1, buttonName: 'Stark', question: 'Who is the only Stark currently north of the wall?', answer: 'Bran', pageId: pageId, icon: 'fa-magic', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://media.giphy.com/media/hz69YUpLt247u/giphy.gif'}),
+			    		knex('buttons').insert({ createdAt: date, position: 2, buttonName: 'Lannister', question: 'Who is the mystery knight that follows around Cersei?', answer: 'The Mountain', pageId: pageId, icon: 'fa-money', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://awesomegifs.com/wp-content/uploads/Tyrion_slaps_Joffrey.gif'}),
+					    knex('buttons').insert({ createdAt: date, position: 3, buttonName: 'Targaryen', question: 'True or False; Daenerys is unaffected by fire', answer: 'True',pageId: pageId, icon: 'fa-diamond', color: 'red', posTop: 53, posLeft: 67, imageUrl: 'http://i.imgur.com/6MjMgs9.png'}),
+					    knex('buttons').insert({ createdAt: date, position: 4, buttonName: 'Bolton', question: 'Which Stark do the Boltons currently have hostage in Winterfell?', answer: 'Rickon', pageId: pageId, icon: 'fa-trophy', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'https://media.giphy.com/media/xTiTnJRx2XkceUmOpq/giphy.gif'}),
+					    knex('buttons').insert({ createdAt: date, position: 5, buttonName: 'High Sparrow', question: 'Which member of the crown does the High Sparrow still have in custody?', answer: 'Margaery Tyrell',pageId: pageId, icon: 'fa-paper-plane', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
+					    knex('buttons').insert({ createdAt: date, position: 6, buttonName: 'Dothraki', question: 'Where did the Dothraki take Daenerys?', answer: 'Vaes Dothrak', pageId: pageId, icon: 'fa-beer', color: 'brown', posTop: 60, posLeft: 80, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
 					);
 				})
 			);
@@ -62,34 +62,16 @@ exports.seed = function(knex, Promise) {
 		.then(userId => {
 			userId = userId[0];
 			return Promise.join(
-				knex('pages').insert({ createdAt: date, pageName: 'Game of Awesomeness', userId: userId2, description: 'A simple quiz with Game of Thrones trivia. *WARNING* Does contain spoiler information from Season 6. Do not take if you\'re not caught up'})
+				knex('pages').insert({ createdAt: date, pageName: 'Nate\'s Personal Quiz', userId: userId2, description: 'Little bits of trivia about Nate Hawthorne...and a couple of slightly embarrassing photos if you guess the answers.'})
 				.returning('id')
 				.then(pageId => {
 					pageId = pageId[0];
 					return Promise.join(
-						knex('buttons').insert({ createdAt: date, position: 1, buttonName: 'Quark', question: 'How many starks are currently left?', answer: '5', pageId: pageId, icon: 'fa-tree', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://40.media.tumblr.com/tumblr_lpoez2k1ap1qhq895o1_500.jpg'}),
-			    		knex('buttons').insert({ createdAt: date, position: 2, buttonName: 'Lannister', question: 'Where do the Lannisters call home?', answer: 'casterly rock', pageId: pageId, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://25.media.tumblr.com/tumblr_mbn1dhxNxa1rtug9eo7_1280.jpg'}),
-					    knex('buttons').insert({ createdAt: date, position: 3, buttonName: 'Targaryen', question: 'What was the name of the dragon Danaerys rode away on?', answer: 'drogon',pageId: pageId, icon: 'fa-fire', color: 'red', posTop: 53, posLeft: 67, imageUrl: 'http://winteriscoming.net/wp-content/uploads/2016/02/House-Targ.-Game-of-Thrones-810x569.jpg'}),
-					    knex('buttons').insert({ createdAt: date, position: 4, buttonName: 'Bolton', question: 'Which Stark do the Boltons currently have hostage in Winterfell?', answer: 'rickon', pageId: pageId, icon: 'fa-male', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'http://vignette2.wikia.nocookie.net/gameofthrones/images/c/cf/House_Bolton_slider_HBO.jpg/revision/latest?cb=20130429043504'}),
-					    knex('buttons').insert({ createdAt: date, position: 5, buttonName: 'High Sparrow', question: 'How many gods does the High Sparrow worship?', answer: '7',pageId: pageId, icon: 'fa-twitter', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
-					    knex('buttons').insert({ createdAt: date, position: 6, buttonName: 'Dothraki', question: 'Who was the Khal who married Danaerys in season one?', answer: 'drogo', pageId: pageId, icon: 'fa-ship', color: 'brown', posTop: 60, posLeft: 80, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
-					);
-				})
-			);
-		})
-		.then(userId => {
-			return Promise.join(
-				knex('pages').insert({ createdAt: date, pageName: 'SUPER HAPPY FUN TIME YEAH', userId: userId2, description: 'A simple quiz with Game of Thrones trivia. *WARNING* Does contain spoiler information from Season 6. Do not take if you\'re not caught up'})
-				.returning('id')
-				.then(pageId => {
-					pageId = pageId[0];
-					return Promise.join(
-						knex('buttons').insert({ createdAt: date, position: 1, buttonName: 'Snark', question: 'How many starks are currently left?', answer: '5', pageId: pageId, icon: 'fa-tree', color: 'gray', posTop: 28, posLeft: 85, imageUrl: 'https://40.media.tumblr.com/tumblr_lpoez2k1ap1qhq895o1_500.jpg'}),
-			    		knex('buttons').insert({ createdAt: date, position: 2, buttonName: 'Lannister', question: 'Where do the Lannisters call home?', answer: 'casterly rock', pageId: pageId, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://25.media.tumblr.com/tumblr_mbn1dhxNxa1rtug9eo7_1280.jpg'}),
-					    knex('buttons').insert({ createdAt: date, position: 3, buttonName: 'Targaryen', question: 'What was the name of the dragon Danaerys rode away on?', answer: 'drogon',pageId: pageId, icon: 'fa-fire', color: 'red', posTop: 53, posLeft: 67, imageUrl: 'http://winteriscoming.net/wp-content/uploads/2016/02/House-Targ.-Game-of-Thrones-810x569.jpg'}),
-					    knex('buttons').insert({ createdAt: date, position: 4, buttonName: 'Bolton', question: 'Which Stark do the Boltons currently have hostage in Winterfell?', answer: 'rickon', pageId: pageId, icon: 'fa-male', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'http://vignette2.wikia.nocookie.net/gameofthrones/images/c/cf/House_Bolton_slider_HBO.jpg/revision/latest?cb=20130429043504'}),
-					    knex('buttons').insert({ createdAt: date, position: 5, buttonName: 'High Sparrow', question: 'How many gods does the High Sparrow worship?', answer: '7',pageId: pageId, icon: 'fa-twitter', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'http://m0.joe.ie/wp-content/uploads/2015/05/26135623/HighSparrow.jpg'}),
-					    knex('buttons').insert({ createdAt: date, position: 6, buttonName: 'Dothraki', question: 'Who was the Khal who married Danaerys in season one?', answer: 'drogo', pageId: pageId, icon: 'fa-ship', color: 'brown', posTop: 60, posLeft: 80, imageUrl: 'http://getinmedia.com/sites/default/files/images/Dothraki%20Inline.jpg'})
+						knex('buttons').insert({ createdAt: date, position: 1, buttonName: 'High School', question: 'What was the name of the High School Nate attended?', answer: 'Central High School', pageId: pageId, icon: 'fa-paper-plane', color: 'red', posTop: 28, posLeft: 85, imageUrl: 'http://i1187.photobucket.com/albums/z394/Vaaldraem/central_zps02d09e3b.png'}),
+			    		knex('buttons').insert({ createdAt: date, position: 2, buttonName: 'Music', question: 'What instrument did Nate play growing up?', answer: 'Drum set', pageId: pageId, icon: 'fa-bell', color: 'gold', posTop: 68, posLeft: 55, imageUrl: 'http://media.musiciansfriend.com/is/image/MMGS7/Imperialstar-6-Piece-Drum-Set-with-Cymbals-Candy-Apple-Mist/J04277000004000-00-500x500.jpg'}),
+					    knex('buttons').insert({ createdAt: date, position: 3, buttonName: 'Video Games', question: 'What game is the Skeleton in the HTML comment from?', answer: 'Undertale',pageId: pageId, icon: 'fa-magic', color: 'red', posTop: 53, posLeft: 67, imageUrl: 'https://i.ytimg.com/vi/mqzBv3FYpr0/hqdefault.jpg'}),
+					    knex('buttons').insert({ createdAt: date, position: 4, buttonName: 'Family', question: 'How many brothers does Nate have?', answer: 'One', pageId: pageId, icon: 'fa-beer', color: 'black', posTop: 78, posLeft: 86, imageUrl: 'https://scontent-dfw1-1.xx.fbcdn.net/v/t1.0-9/270152_1948549392619_5539274_n.jpg?oh=8378609e8ab8ff71813fdf3850a23eb8&oe=57D9C673'}),
+					    knex('buttons').insert({ createdAt: date, position: 5, buttonName: 'Embarrassment', question: 'And finally, has Nate ever grown a beard?', answer: 'No',pageId: pageId, icon: 'fa-trophy', color: 'tan', posTop: 20, posLeft: 63, imageUrl: 'https://scontent-dfw1-1.xx.fbcdn.net/v/t1.0-9/602644_3760217414507_2089735225_n.jpg?oh=ccb44f247a5e5d1928466f6ec53e0e1a&oe=57A7E871'})
 					);
 				})
 			);
