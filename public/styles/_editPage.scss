@@ -89,5 +89,46 @@
 				margin-top: 0.25rem;
 			}
 		}
+		.orderPosition {
+			position: relative;
+			font-family: 'Lato';
+			color: $color-main-black;
+			.x-axis {
+				margin: 0;
+			}
+			.number {
+				display: block;
+			}
+			.range {
+				display: block;
+			}
+			.range2 {
+				margin-right: 65%;
+			}
+		}
+		.imageQuestion {
+			font-family: 'Lato';
+			button {
+				background-color: #4DCBB0;
+			    border: 0.1rem solid #4DCBB0;
+			    font-family: 'Lato';
+			    border-radius: 0.5rem;
+			    color: #fff;
+			    font-size: 1rem;
+			    font-weight: 700;
+			    height: 1.8rem;
+			    letter-spacing: .1rem;
+			    padding: 0 1.5rem;
+			    text-transform: uppercase;
+			    margin: 0 .25rem 0.65rem 0;
+			}
+			label {
+				display: block;
+				input {
+					width: 97%;
+					font-family: 'Merriweather Sans';
+				}
+			}
+		}	
 	}
 }

@@ -102,49 +102,62 @@ export default React.createClass({
 						<div className='divider'></div>
 					</div>
 					<div>
-						<p>Order and Position<i className="fa fa-arrow-down" /></p>
-						<input 
-							type='number'
-							ref='position'
-							value={currentButton ? currentButton.get('position') : null}
-							onChange={this.updateOrder} />
-						<input 
-							type='range'
-							step='3'
-							ref='posLeft'
-							min='43'
-							max='96'
-							value={currentButton ? currentButton.get('posLeft') : null} 
-							onChange={this.updatePosition}/>
-						<input 
-							type='range'
-							step='5'
-							ref='posTop' 
-							value={currentButton ? currentButton.get('posTop') : null} 
-							onChange={this.updatePosition}/>
-						<div className='divider'></div>
+						<p>Order and Position<i className="fa fa-arrow-down" onClick={this.toggleOrder}/></p>
+						<div className='orderPosition inactive'>
+							<label>Order:
+							<input 
+								type='number'
+								ref='position'
+								className='number'
+								value={currentButton ? currentButton.get('position') : null}
+								onChange={this.updateOrder} />
+							</label>
+							<label className='x-axis'>X-Axis Position:
+							<input 
+								className='range x-axis'
+								type='range'
+								step='3'
+								ref='posLeft'
+								min='43'
+								max='96'
+								value={currentButton ? currentButton.get('posLeft') : null} 
+								onChange={this.updatePosition}/>
+							</label>
+							<label className='y-axis'>Y-Axis Position:
+							<input 
+								className='range2'
+								type='range'
+								step='5'
+								ref='posTop' 
+								value={currentButton ? currentButton.get('posTop') : null} 
+								onChange={this.updatePosition}/>
+							</label>
+						</div>	
 					</div>
+					<div className='divider'></div>
 					<div>
-						<p>Image and Question/Answer<i className="fa fa-arrow-down" /></p>
-						<button
-							type='submit'
-							onClick={this.handleFilestack}>Upload File</button>
-						<label>Question
-							<input
-								type='text'
-								ref='question'
-								placeholder='Question'
-								value={currentButton ? currentButton.get('question') : null}
-								onChange={this.modifyQuestion} />
-						</label>
-						<label>Answer
-							<input
-								type='text'
-								ref='answer'
-								placeholder='Answer'
-								value={currentButton ? currentButton.get('answer') : null}
-								onChange={this.modifyAnswer} />
-						</label>
+						<p>Image and Question/Answer<i className="fa fa-arrow-down" onClick={this.toggleImg}/></p>
+						<div className='imageQuestion inactive'>
+							<button
+								type='submit'
+								onClick={this.handleFilestack}>Upload File</button>
+							<label>Question:
+								<input
+									type='text'
+									ref='question'
+									placeholder='Question'
+									value={currentButton ? currentButton.get('question') : null}
+									onChange={this.modifyQuestion} />
+							</label>
+							<label>Answer:
+								<input
+									type='text'
+									ref='answer'
+									placeholder='Answer'
+									value={currentButton ? currentButton.get('answer') : null}
+									onChange={this.modifyAnswer} />
+							</label>
+						</div>
 					</div>
 				</div>
 				<p>{currentButton ? currentButton.get('question') : null}</p>
@@ -313,5 +326,11 @@ export default React.createClass({
 	},
 	toggleName: function() {
 		$('.nameColorIcon').slideToggle('slow');
+	},
+	toggleOrder: function() {
+		$('.orderPosition').slideToggle('slow');
+	},
+	toggleImg: function() {
+		$('.imageQuestion').slideToggle('slow');
 	}
 });
