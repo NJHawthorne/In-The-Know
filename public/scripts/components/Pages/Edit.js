@@ -4,6 +4,7 @@ import EachButton from './../subcomponents/EachButton';
 import ButtonCollection from './../../collections/ButtonCollection';
 import Page from './../../collections/PageCollection';
 import Rayon from 'rayon';
+import $ from 'jquery';
 
 export default React.createClass({
 	getInitialState: function() {
@@ -55,39 +56,50 @@ export default React.createClass({
 		return (
 			<section className='editPage'>
 				<div className='filters'>
-					<div clasName='buttonSelect'>
+					<div className='buttonSelect'>
 						<p>Select a button or Make a new one!</p>
 						<select ref='button' onChange={this.updateCurrentButton}>
 							<option key={0} value="selectButton">Select a button</option>
 							{buttonListing}
 						</select>
 						<button onClick={this.openModal}>Add Question</button>
+						<div className='divider'></div>
 					</div>
 					<div>
-						<p>Name and Icon<i className="fa fa-arrow-down" /></p>
-						<input
-							type='text'
-							ref='buttonName'
-							value={currentButton ? currentButton.get('buttonName') : null} 
-							onChange={this.changeName} />
-						<input
-							type='color'
-							ref='color' 
-							value={currentButton ? currentButton.get('color') : null} 
-							onChange={this.changeColor} />
-							<select id='selectIcon' onChange={this.changeIcon}>
-								<option key='0' value='selectIcon'>Pick an icon</option>
-								<option key='1' value='fa-linux'>Penguin</option>
-								<option key='2' value='fa-beer'>Beer</option>
-								<option key='3' value='fa-diamond'>Diamond</option>
-								<option key='4' value='fa-fighter-jet'>Jet</option>
-								<option key='5' value='fa-globe'>Earth</option>
-								<option key='6' value='fa-magic'>Magic</option>
-								<option key='7' value='fa-money'>Money</option>
-								<option key='8' value='fa-paper-plane'>Paper Plane</option>
-								<option key='9' value='fa-trophy'>Trophy</option>
-								<option key='10' value='fa-spinner'>Spinner</option>
-							</select>
+						<p>Name and Icon<i className="fa fa-arrow-down" onClick={this.toggleName}/></p>
+						<div className='nameColorIcon inactive'>
+							<label>Button Name:
+								<input
+									type='text'
+									ref='buttonName'
+									value={currentButton ? currentButton.get('buttonName') : null} 
+									onChange={this.changeName} />
+							</label>
+							<label>Color:
+								<input
+									type='color'
+									ref='color'
+									className='colorInput' 
+									value={currentButton ? currentButton.get('color') : null} 
+									onChange={this.changeColor} />
+							</label>
+							<label>Icon: 
+								<select id='selectIcon' onChange={this.changeIcon}>
+									<option key='0' value='selectIcon'>Pick an icon</option>
+									<option key='1' value='fa-linux'>Penguin</option>
+									<option key='2' value='fa-beer'>Beer</option>
+									<option key='3' value='fa-diamond'>Diamond</option>
+									<option key='4' value='fa-fighter-jet'>Jet</option>
+									<option key='5' value='fa-globe'>Earth</option>
+									<option key='6' value='fa-magic'>Magic</option>
+									<option key='7' value='fa-money'>Money</option>
+									<option key='8' value='fa-paper-plane'>Paper Plane</option>
+									<option key='9' value='fa-trophy'>Trophy</option>
+									<option key='10' value='fa-spinner'>Spinner</option>
+								</select>
+							</label>
+						</div>
+						<div className='divider'></div>
 					</div>
 					<div>
 						<p>Order and Position<i className="fa fa-arrow-down" /></p>
@@ -110,6 +122,7 @@ export default React.createClass({
 							ref='posTop' 
 							value={currentButton ? currentButton.get('posTop') : null} 
 							onChange={this.updatePosition}/>
+						<div className='divider'></div>
 					</div>
 					<div>
 						<p>Image and Question/Answer<i className="fa fa-arrow-down" /></p>
@@ -299,6 +312,6 @@ export default React.createClass({
 		this.setState({selectedIcon: e.target.value});
 	},
 	toggleName: function() {
-		console.log('You clicked the name and icon arrow');
+		$('.nameColorIcon').slideToggle('slow');
 	}
 });
