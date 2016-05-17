@@ -26,7 +26,7 @@ export default React.createClass({
 		});
 		return (
 			<section>
-				<h1 className='viewQuizzes'>YOOOO THIS IS WHERE THE QUIZZES LIVE</h1>
+				<h1 className='viewQuizzes'>Quizzes</h1>
 				{eachQuiz}
 			</section>
 		);
