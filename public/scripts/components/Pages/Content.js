@@ -8,7 +8,8 @@ export default React.createClass({
 			buttons: buttons,
 			errorFlag: false,
 			currentImage: '',
-			position: 1
+			position: 1,
+			totalButtons: 1
 		};
 	},
 	componentDidMount: function() {
@@ -25,6 +26,8 @@ export default React.createClass({
 			success: (data) => {
 				if(data.length < 1) {
 					this.setState({errorFlag: true});
+				} else {
+					this.setState({totalButtons: data.length});
 				}
 			}
 		});	
@@ -54,6 +57,7 @@ export default React.createClass({
 					<EachButton 
 						loadImage={this.loadImage}
 						updatePosition={this.updatePosition}
+						currentPosition={this.state.position}
 						position={val.get('position')}
 						question={val.get('question')}
 						answer={val.get('answer')}
@@ -65,6 +69,18 @@ export default React.createClass({
 						posTop={val.get('posTop')} />
 				);
 			});
+			if(this.state.position > this.state.totalButtons) {
+				return (
+					<section>
+					<h1>Congratulations, you beat the quiz!</h1>
+					<audio src='/media/Victory.wav' autoPlay='true'/>
+						{eachButton}
+						<div>
+							<img src={this.state.currentImage ? this.state.currentImage : 'http://www.htmlcsscolor.com/preview/gallery/EFEFEF.png'} />
+						</div>
+					</section>
+				);
+			}
 			return (
 				<section>
 					{eachButton}

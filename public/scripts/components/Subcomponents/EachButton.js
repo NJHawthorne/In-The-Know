@@ -12,6 +12,10 @@ export default React.createClass({
 		let color = this.props.color;
 		let topPosition = this.props.posTop;
 		let leftPosition = this.props.posLeft;
+		let position = this.props.position;
+		if(position < this.props.currentPosition) {
+			iconClasses = `fa ${this.props.icon} fa-3x fa-spin`;
+		}
 		let iconStyles = {
 			color: color, 
 			position: 'absolute', 
