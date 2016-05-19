@@ -15,11 +15,10 @@ export default React.createClass({
 	render: function() {
 		return (
 			<section>
-				<i className='fa fa-smile-o fa-5x' onClick={this.toggleHome}/>
+				<i className='fa fa-smile-o fa-5x' onClick={this.toggleHome} onMouseEnter={this.addSpin} onMouseLeave={this.removeSpin}/>
 				<div className='home-details inactive'>
 					<h1>Welcome to In the Know!</h1>
-					<p>Social media today is about sending out messages to entire groups of people at once and everyone responding to it, whether it be hundreds of facebook friends, twitter followers, instagram followers, etc. That's all well and good for social media, because at the end of the day, that's entirely what social media is; social. It's used to connect you with everyone you choose to follow and everyone who chooses to follow you. But there's something lost in a system that sends a message to everyone it possibly can. It loses genuine interpersonal connection for widespread connection.</p> 
-					<p>This webapp is a modern twist on the idea of social media, in that it doesn't function to broadcast a message to everyone it possibly can, but rather, it functions to hide a message for whoever is looking for it. The way this app functions is by literally hiding its content through a series of buttons hidden across the page. When a button is clicked, then you must answer a question before the contents are put onto the page. You can create your own account so you can make quizzes of your own and send them to whoever you’d like. How you style your “invisible” page is up to you, and it’s for anyone else to discover what content you're hiding.</p>
+					<p>In the Know is a entertainment Webapp that allows users to create quizzes for their friends through a series of button-like icons around the page. The quizzes are fundamentally simple; you click an icon, then you are given a question that you get to answer. If you answer correctly, a new icon appears, and the image associated with that question pops up on the page. Regular users can take as many quizzes as they'd like, while logged-in users can additionally make their own quizzes, customizing everything from icon placement, color, and icon, to the question, answer, and associated image.</p> 
 					<button onClick={this.openModal}>Sign Up</button>
 				</div>
 				<Rayon isOpen={this.state.modalVisible} onClose={this.closeModal} >
@@ -102,5 +101,11 @@ export default React.createClass({
 	},
 	toggleHome: function() {
 		$('.home-details').slideToggle('slow');
+	},
+	addSpin: function() {
+		$('.fa-smile-o').addClass('fa-spin');
+	},
+	removeSpin: function() {
+		$('.fa-smile-o').removeClass('fa-spin');
 	}
 });
