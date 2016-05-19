@@ -1,5 +1,7 @@
 # In the Know
 
+[In-the-Know](https://in-the-know.herokuapp.com/)
+
 ## Description
 
 In the Know is a entertainment Webapp that allows users to create quizzes for their friends through a series of button-like icons around the page. The quizzes are fundamentally simple; you click an icon, then you are given a question that you get to answer. If you answer correctly, a new icon appears, and the image associated with that question pops up on the page. Regular users can take as many quizzes as they'd like, while logged-in users can additionally make their own quizzes, customizing everything from icon placement, color, and icon, to the question, answer, and associated image. 
