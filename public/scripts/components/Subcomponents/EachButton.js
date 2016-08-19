@@ -20,8 +20,15 @@ export default React.createClass({
 			color: color, 
 			position: 'absolute', 
 			top: topPosition+'%',
-			left: leftPosition+'%'
+			left: leftPosition+'%',
+			padding: '1.25em',
+			border: position==this.props.currentPosition ? `5px solid ${color}` : null,
+			borderRadius: position==this.props.currentPosition ? `50%` : null
 		};
+		if(position == this.props.currentPosition) {
+			iconStyles.border = '2px solid '+color;
+			iconStyles.border_radius= '50%';
+		}
 		if(this.props.updatePosition) {
 			return (
 				<section>

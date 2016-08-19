@@ -53,6 +53,10 @@ export default React.createClass({
 				<option key={i+1} value={val.get('id')}>{val.get('buttonName')}</option>
 			);
 		});
+		let currentIcon = '';
+		if(currentButton) {
+			currentIcon = currentButton.get('icon');
+		}
 		return (
 			<section className='editPage'>
 				<div className='filters'>
@@ -73,7 +77,7 @@ export default React.createClass({
 									type='text'
 									ref='buttonName'
 									value={currentButton ? currentButton.get('buttonName') : null} 
-									onChange={this.changeName} />
+									onInput={this.changeName} />
 							</label>
 							<label>Color:
 								<input
@@ -81,7 +85,7 @@ export default React.createClass({
 									ref='color'
 									className='colorInput' 
 									value={currentButton ? currentButton.get('color') : null} 
-									onChange={this.changeColor} />
+									onBlur={this.changeColor} />
 							</label>
 							<label>Icon: 
 								<select id='selectIcon' onChange={this.changeIcon}>
@@ -121,7 +125,7 @@ export default React.createClass({
 								min='43'
 								max='96'
 								value={currentButton ? currentButton.get('posLeft') : null} 
-								onChange={this.updatePosition}/>
+								onInput={this.updatePosition}/>
 							</label>
 							<label className='y-axis'>Y-Axis Position:
 							<input 
@@ -130,7 +134,7 @@ export default React.createClass({
 								step='5'
 								ref='posTop' 
 								value={currentButton ? currentButton.get('posTop') : null} 
-								onChange={this.updatePosition}/>
+								onInput={this.updatePosition}/>
 							</label>
 						</div>	
 					</div>
@@ -147,7 +151,7 @@ export default React.createClass({
 									ref='question'
 									placeholder='Question'
 									value={currentButton ? currentButton.get('question') : null}
-									onChange={this.modifyQuestion} />
+									onInput={this.modifyQuestion} />
 							</label>
 							<label>Answer:
 								<input
@@ -155,7 +159,7 @@ export default React.createClass({
 									ref='answer'
 									placeholder='Answer'
 									value={currentButton ? currentButton.get('answer') : null}
-									onChange={this.modifyAnswer} />
+									onInput={this.modifyAnswer} />
 							</label>
 						</div>
 					</div>
